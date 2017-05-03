@@ -28,8 +28,7 @@ class Agama extends CI_Controller {
 			$row[] = $agama->agama;
 
 			//add html for action
-			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void()" title="Edit" onclick="edit_agama('."'".$agama->id_agama."'".')"><i class="glyphicon glyphicon-edit"></i></a> ||
-				  <a class="btn btn-sm btn-danger" href="javascript:void()" title="Hapus" onclick="delete_agama('."'".$agama->id_agama."'".')"><i class="glyphicon glyphicon-trash"></i></a>';
+			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void()" title="Edit" onclick="edit_agama('."'".$agama->id_agama."'".')"><i class="glyphicon glyphicon-edit"></i></a> || &nbsp<a class="btn btn-sm btn-danger" href="javascript:void()" title="Hapus" onclick="delete_agama('."'".$agama->id_agama."'".')"><i class="glyphicon glyphicon-trash"></i></a>';
 		
 			$data[] = $row;
 		}

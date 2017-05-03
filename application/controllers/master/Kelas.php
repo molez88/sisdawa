@@ -29,7 +29,7 @@ class Kelas extends CI_Controller {
 
 			//add html for action
 			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void()" title="Edit" onclick="edit_kelas('."'".$kelas->id_kelas."'".')"><i class="glyphicon glyphicon-edit"></i></a> ||
-				  <a class="btn btn-sm btn-danger" href="javascript:void()" title="Hapus" onclick="delete_kelas('."'".$kelas->id_kelas."'".')"><i class="glyphicon glyphicon-trash"></i></a>';
+				  &nbsp<a class="btn btn-sm btn-danger" href="javascript:void()" title="Hapus" onclick="delete_kelas('."'".$kelas->id_kelas."'".')"><i class="glyphicon glyphicon-trash"></i></a>';
 		
 			$data[] = $row;
 		}
