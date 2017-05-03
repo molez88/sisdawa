@@ -2,9 +2,9 @@
 
 class Agama_model extends CI_Model {
 
-	var $table = 'tbl_agama';
+	var $table = 'agama';
 	var $column = array('agama');
-	var $order = array('id' => 'desc');
+	var $order = array('id_agama' => 'desc');
 
 	public function __construct()
 	{
@@ -77,7 +77,7 @@ class Agama_model extends CI_Model {
 	public function get_by_id($id)
 	{
 		$this->db->from($this->table);
-		$this->db->where('id',$id);
+		$this->db->where('id_agama',$id);
 		$query = $this->db->get();
 
 		return $query->row();
@@ -95,7 +95,7 @@ class Agama_model extends CI_Model {
 	}
 
 	public function delete_by_id($id){
-		$this->db->where('id', $id);
+		$this->db->where('id_agama', $id);
 		$this->db->delete($this->table);
 	}
 }

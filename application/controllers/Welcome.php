@@ -6,7 +6,7 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$data['judul']='Dashboard';
-		$property['konten']=$this->load->view('master/dashboard',$data,true);
-		$this->load->view('welcome_message', $property);
+		$property['konten']=$this->load->view('dashboard',$data,true);
+		$this->load->view('template', $property);
 	}
 }

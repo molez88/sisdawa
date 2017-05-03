@@ -12,7 +12,7 @@ class Agama extends CI_Controller {
 	{
 		$data['judul'] = 'Data Agama';
 		$property['konten'] = $this->load->view('master/agama',$data,TRUE);
-		$this->load->view('welcome_message',$property);
+		$this->load->view('template',$property);
 	}
 
 	public function list_agama()
@@ -28,8 +28,8 @@ class Agama extends CI_Controller {
 			$row[] = $agama->agama;
 
 			//add html for action
-			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void()" title="Edit" onclick="edit_agama('."'".$agama->id."'".')"><i class="glyphicon glyphicon-pencil"></i></a> ||
-				  <a class="btn btn-sm btn-danger" href="javascript:void()" title="Hapus" onclick="delete_agama('."'".$agama->id."'".')"><i class="glyphicon glyphicon-trash"></i></a>';
+			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void()" title="Edit" onclick="edit_agama('."'".$agama->id_agama."'".')"><i class="glyphicon glyphicon-edit"></i></a> ||
+				  <a class="btn btn-sm btn-danger" href="javascript:void()" title="Hapus" onclick="delete_agama('."'".$agama->id_agama."'".')"><i class="glyphicon glyphicon-trash"></i></a>';
 		
 			$data[] = $row;
 		}
@@ -65,7 +65,7 @@ class Agama extends CI_Controller {
 		$data = array(
 			'agama' => $this->input->post('agama')
 		);
-		$this->Agama_model->updateAgama(array('id' => $this->input->post('id')), $data);
+		$this->Agama_model->updateAgama(array('id_agama' => $this->input->post('id_agama')), $data);
 		echo json_encode(array("status" => TRUE));
 	}
 

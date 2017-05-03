@@ -8,7 +8,7 @@
   </div>
   <!-- /.panel-heading -->
   <div class="panel-body">
-    <table width="100%" class="table table-striped table-bordered table-hover" id="table">
+    <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
         <thead>
           <tr>
             <th width="7%">No.</th>
@@ -32,12 +32,12 @@
         </div>
         <div class="modal-body form">
             <form action="#" id="form" class="form-horizontal">
-                <input type="hidden" value="" name="id"/> 
+                <input type="hidden" value="" name="id_agama"/> 
                 <div class="form-body">
                   <div class="form-group">
                       <label class="control-label col-md-3">Agama</label>
                       <div class="col-md-9">
-                          <input name="agama" placeholder="First Name" class="form-control" type="text">
+                          <input name="agama" placeholder="Agama" class="form-control" type="text">
                           <span class="help-block"></span>
                       </div>
                   </div>
@@ -53,12 +53,12 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!-- End Bootstrap modal -->
-
+<script src="<?php echo base_url()?>assets/vendors/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
 
     //datatables
-    table = $('#table').DataTable({ 
+    table = $('#datatable-responsive').DataTable({ 
 
         "processing": true, //Feature control the processing indicator.
         "serverSide": true, //Feature control DataTables' server-side processing mode.
@@ -108,7 +108,7 @@
       type: "GET",
       dataType: "JSON",
       success: function(data){
-        $('[name="id"]').val(data.id);
+        $('[name="id_agama"]').val(data.id_agama);
         $('[name="agama"]').val(data.agama);
         $('#modal_form').modal('show');
         $('.modal-title').text('Form Agama'); // Set title to Bootstrap modal title
