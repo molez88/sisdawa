@@ -7,7 +7,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title>Gentelella Alela! | </title>
+		<title>Sistem Data Siswa | SMP Muhammadiyah 2 Gamping</title>
 
 		<!-- Bootstrap -->
 		<link href="<?php echo base_url()?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -62,7 +62,7 @@
 											<li><a href="<?php echo site_url(); ?>master/agama">Agama</a></li>
 											<li><a href="<?php echo site_url(); ?>master/kelas">Kelas</a></li>
 											<li><a href="<?php echo site_url(); ?>master/thnakademik">Tahun Akademik</a></li>
-											<li><a href="#">Pendidikan</a></li>
+											<li><a href="<?php echo site_url(); ?>master/pendidikan">Pendidikan</a></li>
 											<li><a href="#">Pekerjaan</a></li>
 											<li><a href="#">Penghasilan</a></li>
 										</ul>
@@ -78,27 +78,6 @@
 											<li><a href="invoice.html">Invoice</a></li>
 											<li><a href="inbox.html">Inbox</a></li>
 											<li><a href="calendar.html">Calendar</a></li>
-										</ul>
-									</li>
-									<li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
-										<ul class="nav child_menu">
-											<li><a href="tables.html">Tables</a></li>
-											<li><a href="tables_dynamic.html">Table Dynamic</a></li>
-										</ul>
-									</li>
-									<li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
-										<ul class="nav child_menu">
-											<li><a href="chartjs.html">Chart JS</a></li>
-											<li><a href="chartjs2.html">Chart JS2</a></li>
-											<li><a href="morisjs.html">Moris JS</a></li>
-											<li><a href="echarts.html">ECharts</a></li>
-											<li><a href="other_charts.html">Other Charts</a></li>
-										</ul>
-									</li>
-									<li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
-										<ul class="nav child_menu">
-											<li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-											<li><a href="fixed_footer.html">Fixed Footer</a></li>
 										</ul>
 									</li>
 								</ul>
@@ -161,7 +140,7 @@
 		</div>
 
 		<!-- jQuery -->
-		<script src="<?php echo base_url()?>assets/vendors/jquery/dist/jquery.min.js"></script>
+		<script src="<?php echo base_url()?>assets/jquery-2.1.4.min.js"></script>
 		<!-- data tables -->
     <script src="<?php echo base_url()?>assets/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url()?>assets/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>

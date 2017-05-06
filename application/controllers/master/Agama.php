@@ -19,16 +19,14 @@ class Agama extends CI_Controller {
 	{
 		$list = $this->Agama_model->get_datatables();
 		$data = array();
-		$no = $_POST['start'];
-		$numb = 1;
+		$no = $_POST['start']+1;
 		foreach ($list as $agama) {
-			$no++;
 			$row = array();
-			$row[]= $numb++ . '.';
+			$row[]= $no++ . '.';
 			$row[] = $agama->agama;
 
 			//add html for action
-			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void()" title="Edit" onclick="edit_agama('."'".$agama->id_agama."'".')"><i class="glyphicon glyphicon-edit"></i></a> || &nbsp<a class="btn btn-sm btn-danger" href="javascript:void()" title="Hapus" onclick="delete_agama('."'".$agama->id_agama."'".')"><i class="glyphicon glyphicon-trash"></i></a>';
+			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void()" title="Edit" onclick="edit_agama('."'".$agama->id_agama."'".')"><i class="glyphicon glyphicon-edit"></i> Edit</a> || &nbsp<a class="btn btn-sm btn-danger" href="javascript:void()" title="Hapus" onclick="delete_agama('."'".$agama->id_agama."'".')"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
 		
 			$data[] = $row;
 		}

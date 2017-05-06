@@ -18,9 +18,7 @@
         </thead>
         
     </table>
-      <!-- /.table-responsive -->
   </div>
-    <!-- /.panel-body -->
 </div>
 <!-- Bootstrap modal -->
 <div class="modal fade" id="modal_form" role="dialog">
@@ -53,8 +51,10 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!-- End Bootstrap modal -->
-<script src="<?php echo base_url()?>assets/vendors/jquery/dist/jquery.min.js"></script>
+<script src="<?php echo base_url()?>assets/jquery-2.1.4.min.js"></script>
 <script type="text/javascript">
+  var save_method; //for save method string
+  var table;
   $(document).ready(function() {
 
     //datatables
@@ -72,10 +72,10 @@
 
         //Set column definition initialisation properties.
         "columnDefs": [
-        { 
+          { 
             "targets": [ -1 ], //last column
             "orderable": false, //set not orderable
-        },
+          },
         ],
 
     });

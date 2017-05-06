@@ -6,6 +6,8 @@
  *     // code here
  * });
  */
+
+ var table;
 (function($,sr){
     // debouncing function from John Hann
     // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
@@ -2556,7 +2558,7 @@ if (typeof NProgress != 'undefined') {
 				  keys: true
 				});
 
-				//$('#datatable-responsive').DataTable();
+				table = $('#datatable-responsive').DataTable();
 
 				$('#datatable-scroller').DataTable({
 				  ajax: "js/datatables/json/scroller-demo.json",

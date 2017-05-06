@@ -29,8 +29,8 @@ class Thnakademik extends CI_Controller {
 			$row[] = $thnakademik->keterangan;
 
 			//add html for action
-			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void()" title="Edit" onclick="edit_thnakademik('."'".$thnakademik->id_th_akademik."'".')"><i class="glyphicon glyphicon-edit"></i></a> ||
-				  &nbsp<a class="btn btn-sm btn-danger" href="javascript:void()" title="Hapus" onclick="delete_thnakademik('."'".$thnakademik->id_th_akademik."'".')"><i class="glyphicon glyphicon-trash"></i></a>';
+			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void()" title="Edit" onclick="edit_thnakademik('."'".$thnakademik->id_th_akademik."'".')"><i class="glyphicon glyphicon-edit"></i> Edit</a> ||
+				  &nbsp<a class="btn btn-sm btn-danger" href="javascript:void()" title="Hapus" onclick="delete_thnakademik('."'".$thnakademik->id_th_akademik."'".')"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
 		
 			$data[] = $row;
 		}
