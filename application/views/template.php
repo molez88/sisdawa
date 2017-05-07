@@ -63,7 +63,7 @@
 											<li><a href="<?php echo site_url(); ?>master/kelas">Kelas</a></li>
 											<li><a href="<?php echo site_url(); ?>master/thnakademik">Tahun Akademik</a></li>
 											<li><a href="<?php echo site_url(); ?>master/pendidikan">Pendidikan</a></li>
-											<li><a href="#">Pekerjaan</a></li>
+											<li><a href="<?php echo site_url(); ?>master/pekerjaan">Pekerjaan</a></li>
 											<li><a href="#">Penghasilan</a></li>
 										</ul>
 									</li>
