@@ -64,7 +64,7 @@
 											<li><a href="<?php echo site_url(); ?>master/thnakademik">Tahun Akademik</a></li>
 											<li><a href="<?php echo site_url(); ?>master/pendidikan">Pendidikan</a></li>
 											<li><a href="<?php echo site_url(); ?>master/pekerjaan">Pekerjaan</a></li>
-											<li><a href="#">Penghasilan</a></li>
+											<li><a href="<?php echo site_url(); ?>master/penghasilan">Penghasilan</a></li>
 										</ul>
 									</li>
 									<li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
