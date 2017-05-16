@@ -43,7 +43,7 @@
 							</div>
 							<div class="profile_info">
 								<span>Welcome,</span>
-								<h2>John Doe</h2>
+								<h2><?php echo $this->session->userdata('nama'); ?></h2>
 							</div>
 						</div>
 						<!-- /menu profile quick info -->
@@ -57,6 +57,7 @@
 								<ul class="nav side-menu">
 									<li><a href="<?php echo site_url()?>"><i class="fa fa-home"></i> Home</a>
 									</li>
+									<?php if ($this->session->userdata('level') == 'admin'): ?>
 									<li><a><i class="fa fa-database"></i> Master Data <span class="fa fa-chevron-down"></span></a>
 										<ul class="nav child_menu">
 											<li><a href="<?php echo site_url(); ?>master/agama">Agama</a></li>
@@ -67,6 +68,8 @@
 											<li><a href="<?php echo site_url(); ?>master/penghasilan">Penghasilan</a></li>
 										</ul>
 									</li>
+									<?php endif; ?>
+									
 									<li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
 										<ul class="nav child_menu">
 											<li><a href="general_elements.html">General Elements</a></li>
@@ -99,12 +102,12 @@
 							<ul class="nav navbar-nav navbar-right">
 								<li class="">
 									<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-										<img src="<?php echo base_url()?>assets/production/images/img.jpg" alt="">John Doe
+										<img src="<?php echo base_url()?>assets/production/images/img.jpg" alt=""><?php echo $this->session->userdata('nama'); ?>
 										<span class=" fa fa-angle-down"></span>
 									</a>
 									<ul class="dropdown-menu dropdown-usermenu pull-right">
 										<li><a href="javascript:;"> Profile</a></li>
-										<li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+										<li><a href="<?php echo base_url(); ?>users/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
 									</ul>
 								</li>
 							</ul>
