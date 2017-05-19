@@ -76,7 +76,7 @@
             "targets": [ -1 ], //last column
             "orderable": false, //set not orderable
           },
-        ],
+        ]
 
     });
 
