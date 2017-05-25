@@ -3,7 +3,7 @@
 class Users_model extends CI_Model {
 
 	var $table = 'user';
-	var $column_order = array(null,'username','password','nama','email');
+	var $column_order = array('username','password','nama','email',null);
 	var $column_search = array('username','password','nama','email');
 	var $order = array('id' => 'desc');
 

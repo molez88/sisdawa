@@ -8,18 +8,22 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<title>Sistem Data Siswa | SMP Muhammadiyah 2 Gamping</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet">
 
 		<!-- Bootstrap -->
 		<link href="<?php echo base_url()?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<!-- bootstrap-datepicker -->
+    <link href="<?php echo base_url()?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
 		<!-- Font Awesome -->
 		<link href="<?php echo base_url()?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-		<!-- iCheck -->
-		<!-- <link href="<?php echo base_url()?>assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet"> -->
-	
-		
-		
-		<!-- bootstrap-daterangepicker -->
-		<link href="<?php echo base_url()?>assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+		<!-- datatables -->
+		<link href="<?php echo base_url()?>assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url()?>assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url()?>assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url()?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url()?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 
 		<!-- Custom Theme Style -->
 		<link href="<?php echo base_url()?>assets/build/css/custom.min.css" rel="stylesheet">
@@ -69,17 +73,14 @@
 									</li>
 									<?php endif; ?>
 									
-									<li><a><i class="fa fa-group"></i> Siswa <span class="fa fa-chevron-down"></span></a>
-										<ul class="nav child_menu">
-											<li><a href="general_elements.html">Form Siswa</a></li>
-											<li><a href="media_gallery.html">Daftar Siswa</a></li>
-										</ul>
-									</li>
+									<li><a href="<?php echo base_url();?>siswa"><i class="fa fa-group"></i> Data Siswa</a></li>
 								</ul>
 							</div>
 							<div class="menu_section">
 								<ul class="nav side-menu">
+									<?php if ($this->session->userdata('level') == 'admin'): ?>
 									<li><a href="<?php echo site_url() ?>users"><i class="fa fa-user"></i> Users</a>
+								<?php endif; ?>
 								</ul>
 							</div>
 
@@ -158,8 +159,7 @@
 		<script src="<?php echo base_url()?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 		
 		<!-- bootstrap-daterangepicker -->
-		<script src="<?php echo base_url()?>assets/vendors/moment/min/moment.min.js"></script>
-		<script src="<?php echo base_url()?>assets/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+		<script src="<?php echo base_url()?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 		<!-- data tables -->
 		<link href="<?php echo base_url()?>assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url()?>assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">

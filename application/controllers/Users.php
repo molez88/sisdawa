@@ -11,7 +11,7 @@ class Users extends CI_Controller {
 
 	public function index()
 	{
-		if ($this->session->userdata('logged_in') == FALSE) {
+		if ($this->session->userdata('logged_in') == FALSE || $this->session->userdata('level') != 'admin') {
 			redirect('users/login','refresh');
 		}
 
@@ -27,11 +27,11 @@ class Users extends CI_Controller {
 		foreach ($users as $user) {
 			$row = array();
 			$row[] = $no++.'.';
-			$row[] = '<a href="'.base_url('assets/img/users/'.$user->foto).'" target="_blank"><img src="'.base_url('assets/img/users/'.$user->foto).'" class="img-responsive" height="100px" width="100px"/></a>';
 			$row[] = $user->username;
 			$row[] = $user->password;
 			$row[] = $user->nama;
 			$row[] = $user->email;
+			$row[] = '<a href="'.base_url('assets/img/users/'.$user->foto).'" target="_blank"><img src="'.base_url('assets/img/users/'.$user->foto).'" class="img-responsive" height="100px" width="100px"/></a>';
 
 			//add html for action
 			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_users('."'".$user->id."'".')"><i class="glyphicon glyphicon-edit"></i> Edit</a>||

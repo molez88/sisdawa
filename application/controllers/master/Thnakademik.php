@@ -5,7 +5,7 @@ class Thnakademik extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		if ($this->session->userdata('logged_in') == FALSE) {
+		if ($this->session->userdata('logged_in') == FALSE || $this->session->userdata('level') != 'admin') {
 			redirect('users/login','refresh');
 		}
 		$this->load->model('Thnakademik_model');

@@ -12,11 +12,11 @@
         <thead>
           <tr>
             <th width="7%">No.</th>
-            <th>Foto</th>
             <th>Username</th>
             <th>Password</th>
             <th>Nama</th>
             <th>Email</th>
+            <th>Foto</th>
             <th width="10%">Aksi</th>
           </tr>
         </thead>
