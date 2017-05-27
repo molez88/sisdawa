@@ -6,7 +6,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-
+		<link rel="icon" type="image/png" href="<?php echo base_url() ?>assets/img/smp.png">
 		<title>Sistem Data Siswa | SMP Muhammadiyah 2 Gamping</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -35,7 +35,7 @@
 				<div class="col-md-3 left_col">
 					<div class="left_col scroll-view">
 						<div class="navbar nav_title" style="border: 0;">
-							<a href="<?php echo base_url(); ?>" class="site_title"><i class="fa fa-universal-access "></i><span> <strong>Data Siswa</strong></span></a>
+							<a href="<?php echo base_url(); ?>" class="site_title"><i class="fa fa-universal-access "></i><span> <strong>SISDAWA</strong></span></a>
 						</div>
 
 						<div class="clearfix"></div>
@@ -43,7 +43,7 @@
 						<!-- menu profile quick info -->
 						<div class="profile clearfix">
 							<div class="profile_pic">
-								<img src="<?php echo base_url('assets/img/users/'.$this->session->userdata('foto'))?>" alt="..." class="img-circle profile_img img-responsive">
+								<img src="<?php echo base_url('assets/img/smp.png')?>" alt="..." class="img-circle profile_img img-responsive">
 							</div>
 							<div class="profile_info">
 								<span>Welcome,</span>
@@ -72,8 +72,13 @@
 										</ul>
 									</li>
 									<?php endif; ?>
+									<li><a><i class="fa fa-group"></i> Form Data Siswa <span class="fa fa-chevron-down"></span></a>
+										<ul class="nav child_menu">
+											<li><a href="<?php echo base_url();?>siswa">Data Siswa</a></li>
+											<li><a href="<?php echo base_url();?>transaksikelas">Transaksi Kelas</a></li>
+										</ul>
+									</li>
 									
-									<li><a href="<?php echo base_url();?>siswa"><i class="fa fa-group"></i> Data Siswa</a></li>
 								</ul>
 							</div>
 							<div class="menu_section">
@@ -100,7 +105,7 @@
 							<ul class="nav navbar-nav navbar-right">
 								<li class="">
 									<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-										<img src="<?php echo base_url('assets/img/users/'.$this->session->userdata('foto'))?>" alt=""><?php echo $this->session->userdata('nama'); ?>
+										<?php echo $this->session->userdata('nama'); ?>
 										<span class=" fa fa-angle-down"></span>
 									</a>
 									<ul class="dropdown-menu dropdown-usermenu pull-right">

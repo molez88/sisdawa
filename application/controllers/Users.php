@@ -15,40 +15,30 @@ class Users extends CI_Controller {
 			redirect('users/login','refresh');
 		}
 
+		$data['user'] = $this->Users_model->getUsers()->result_array();
+
 		$data['judul'] = 'Data Users';
-		$property['konten'] = $this->load->view('users',$data,TRUE);
+		$property['konten'] = $this->load->view('users/view',$data,TRUE);
 		$this->load->view('template',$property);
 	}
-	public function list_users()
+
+	public function tambahusers()
 	{
-		$users = $this->Users_model->get_datatables();
-		$data = array();
-		$no = $_POST['start'] + 1;
-		foreach ($users as $user) {
-			$row = array();
-			$row[] = $no++.'.';
-			$row[] = $user->username;
-			$row[] = $user->password;
-			$row[] = $user->nama;
-			$row[] = $user->email;
-			$row[] = '<a href="'.base_url('assets/img/users/'.$user->foto).'" target="_blank"><img src="'.base_url('assets/img/users/'.$user->foto).'" class="img-responsive" height="100px" width="100px"/></a>';
+		$data['judul'] = 'Form Tambah User';
 
-			//add html for action
-			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_users('."'".$user->id."'".')"><i class="glyphicon glyphicon-edit"></i> Edit</a>||
-				  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_users('."'".$user->id."'".')"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
-		
-			$data[] = $row;
+		$this->form_validation->set_rules('username', 'username','required|is_unique');
+		$this->form_validation->set_rules('password', 'password','required');
+		$this->form_validation->set_rules('nama', 'nama','required');
+		$this->form_validation->set_rules('email', 'email','required');
+		if ($this->form_validation->run() == FALSE) {
+			$property['konten'] = $this->load->view('users/input',$data,TRUE);
+			$this->load->view('template',$property);
+		} else {
+			$this->Transaksi_model->transaksi_input();
+			redirect('transaksikelas','refresh');
 		}
-
-		$output = array(
-						"draw" => $_POST['draw'],
-						"recordsTotal" => $this->Users_model->count_all(),
-						"recordsFiltered" => $this->Users_model->count_filtered(),
-						"data" => $data,
-				);
-		//output to json format
-		echo json_encode($output);
 	}
+	
 	public function login()
 	{
 		$this->form_validation->set_rules('username', 'Username', 'required');
@@ -65,7 +55,6 @@ class Users extends CI_Controller {
 					$user_data = array(
 						'username' => $data->username,
 						'nama' => $data->nama,
-						'foto' => $data->foto,
 						'level' => $data->level,
 						'logged_in' => TRUE
 					);

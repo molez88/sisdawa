@@ -43,9 +43,40 @@ class Siswa_model extends CI_Model {
 		$this->db->trans_complete();
 	}
 
-	public function findbykelas($kelas)
+	public function editdatasiswa($data_siswa,$data_ortu,$data_wali,$nisn)
 	{
-		return $this->db->query("SELECT siswa.nisn,siswa.nama_lengkap, siswa.tempat_lahir,siswa.tgl_lahir,siswa.gender,siswa.foto_siswa,siswa.telp, kelas.nm_kelas FROM transaksi_kelas INNER JOIN siswa ON transaksi_kelas.nisn = siswa.nisn INNER JOIN kelas ON transaksi_kelas.id_kelas = kelas.id_kelas WHERE kelas.id_kelas = '$kelas'");
+		$this->db->trans_start();
+		$this->db->where('nisn', $nisn);
+		$this->db->update('siswa', $data_siswa);
+
+		$this->db->where('nisn', $nisn);
+		$this->db->update('siswa_ortu', $siswa_ortu);
+
+		$this->db->where('nisn', $nisn);
+		$this->db->update('siswa_wali', $data_wali);
+		$this->db->trans_complete();
+	}
+
+	public function getbyid($nisn)
+	{
+		// return $this->db->get_where('siswa',array('nisn'=>$nisn))->row_array();
+		// $this->db->get_where('siswa_ortu',array('nisn'=>$nisn))->row_array();
+		// $this->db->get_where('siswa_wali',array('nisn'=>$nisn))->row_array();
+		return $this->db->query("SELECT * FROM siswa as s INNER JOIN siswa_ortu as so ON s.nisn = so.nisn INNER JOIN siswa_wali as sw ON s.nisn = sw.nisn WHERE s.nisn = '$nisn'")->row_array();
+	}
+
+	public function siswa_hapus($nisn)
+	{
+		$this->db->trans_start();
+		$this->db->where('nisn', $nisn);
+		$this->db->delete('siswa');
+
+		$this->db->where('nisn', $nisn);
+		$this->db->delete('siswa_ortu');
+
+		$this->db->where('nisn', $nisn);
+		$this->db->delete('siswa_wali');
+		$this->db->trans_complete();
 	}
 
 	public function semuasiswa($kelas)
@@ -57,6 +88,43 @@ class Siswa_model extends CI_Model {
 			return $this->db->get('siswa');
 		}
 	}
+
+	public function getSiswaDetail($nisn)
+	{
+		return $this->db->query("SELECT * FROM siswa, agama WHERE siswa.id_agama = agama.id_agama AND siswa.nisn = '$nisn'")->row_array();
+	}
+
+	public function getAyahDetail($nisn)
+	{
+		return $this->db->query("SELECT * FROM siswa_ortu, agama,pekerjaan,pendidikan,penghasilan
+														WHERE
+														siswa_ortu.nisn = '$nisn' AND
+														siswa_ortu.ayah_id_agama = agama.id_agama AND
+														siswa_ortu.ayah_id_pendidikan = pendidikan.id_pendidikan AND
+														siswa_ortu.ayah_id_pekerjaan = pekerjaan.id_pekerjaan AND
+														siswa_ortu.ayah_id_penghasilan = penghasilan.id_penghasilan")->row_array();
+	}
+	public function getIbuDetail($nisn)
+	{
+		return $this->db->query("SELECT * FROM siswa_ortu, agama,pekerjaan,pendidikan,penghasilan
+														WHERE
+														siswa_ortu.nisn = '$nisn' AND
+														siswa_ortu.ibu_id_agama = agama.id_agama AND
+														siswa_ortu.ibu_id_pendidikan = pendidikan.id_pendidikan AND
+														siswa_ortu.ibu_id_pekerjaan = pekerjaan.id_pekerjaan AND
+														siswa_ortu.ibu_id_penghasilan = penghasilan.id_penghasilan")->row_array();
+	}
+	public function getWaliDetail($nisn)
+	{
+		return $this->db->query("SELECT * FROM siswa_wali, agama,pekerjaan,pendidikan,penghasilan
+														WHERE
+														siswa_wali.nisn = '$nisn' AND
+														siswa_wali.wali_id_agama = agama.id_agama AND
+														siswa_wali.wali_id_pendidikan = pendidikan.id_pendidikan AND
+														siswa_wali.wali_id_pekerjaan = pekerjaan.id_pekerjaan AND
+														siswa_wali.wali_id_penghasilan = penghasilan.id_penghasilan")->row_array();
+	}
+
 
 }
 

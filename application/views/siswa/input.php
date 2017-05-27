@@ -10,7 +10,7 @@
     <div class="panel-body row">
       <div class="col-md-9">
         <div class="form-group">
-          <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">1.&nbsp;&nbsp;NISN</label>
+          <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">1.&nbsp;&nbsp;NIS</label>
           <div class="col-md-3 col-xs-12">
             <input type="text" class="form-control" id="nisn" name="nisn" maxlength="4" required>
           </div>
@@ -46,7 +46,7 @@
         <div class="form-group">
           <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">5.&nbsp;&nbsp;Alamat</label>
           <div class="col-md-7 col-xs-12">
-            <textarea type="text" class="form-control" name="alamat" required></textarea>
+            <textarea type="text" class="form-control" name="alamat"></textarea>
           </div>
         </div>
         <div class="form-group">
@@ -74,13 +74,13 @@
         <div class="form-group">
           <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">8.&nbsp;&nbsp;Anak ke berapa</label>
           <div class="col-md-2 col-xs-12">
-            <input type="number" class="form-control" name="anak_ke" required>
+            <input type="number" class="form-control" name="anak_ke">
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">9.&nbsp;&nbsp;Jumlah Saudara</label>
           <div class="col-md-2 col-xs-12">
-            <input type="number" class="form-control" name="jml_saudara" required>
+            <input type="number" class="form-control" name="jml_saudara">
           </div>
         </div>
         <div class="form-group">
@@ -96,9 +96,9 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">12.&nbsp;&nbsp;Riwayat Kesehatam</label>
+          <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">12.&nbsp;&nbsp;Riwayat Kesehatan</label>
           <div class="col-md-7 col-xs-12">
-            <input type="text" class="form-control" name="riwayat_kesehatan" required>
+            <input type="text" class="form-control" name="riwayat_kesehatan">
           </div>
         </div>
       </div>
@@ -124,7 +124,7 @@
         <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">14.&nbsp;&nbsp;Tempat dan Tanggal Lahir</label>
           <div class="col-md-2 col-xs-12">
-            <input type="text" class="form-control" name="ayah_tmp_lahir" placeholder="Kota/Kabupaten" required>
+            <input type="text" class="form-control" name="ayah_tmp_lahir" placeholder="Kota/Kabupaten">
           </div>
           <div class="col-md-2 col-xs-12 input-group date " data-date="" data-date-format="yyyy-mm-dd">
             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
@@ -178,13 +178,13 @@
         <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">19.&nbsp;&nbsp;Alamat</label>
           <div class="col-md-5 col-xs-12">
-            <textarea type="text" class="form-control" name="ayah_alamat" required></textarea>
+            <textarea type="text" class="form-control" name="ayah_alamat"></textarea>
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">20.&nbsp;&nbsp;No. Telp/HP</label>
           <div class="col-md-5 col-xs-12">
-            <input type="text" class="form-control numeric" name="ayah_telp" maxlength="15" required>
+            <input type="text" class="form-control numeric" name="ayah_telp" maxlength="15">
           </div>
         </div>
       </div>
@@ -205,7 +205,7 @@
         <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">22.&nbsp;&nbsp;Tempat dan Tanggal Lahir</label>
           <div class="col-md-2 col-xs-12">
-            <input type="text" class="form-control" name="ibu_tmp_lahir" placeholder="Kota/Kabupaten" required>
+            <input type="text" class="form-control" name="ibu_tmp_lahir" placeholder="Kota/Kabupaten">
           </div>
           <div class="col-md-2 col-xs-12 input-group date " data-date="" data-date-format="yyyy-mm-dd">
             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
@@ -259,13 +259,13 @@
         <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">27.&nbsp;&nbsp;Alamat</label>
           <div class="col-md-5 col-xs-12">
-            <textarea type="text" class="form-control" name="ibu_alamat" required></textarea>
+            <textarea type="text" class="form-control" name="ibu_alamat"></textarea>
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">28.&nbsp;&nbsp;No. Telp/HP</label>
           <div class="col-md-5 col-xs-12">
-            <input type="text" class="form-control numeric" name="ibu_telp" maxlength="15" required>
+            <input type="text" class="form-control numeric" name="ibu_telp" maxlength="15" >
           </div>
         </div>
       </div>
@@ -287,7 +287,7 @@
         <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">22.&nbsp;&nbsp;Tempat dan Tanggal Lahir</label>
           <div class="col-md-2 col-xs-12">
-            <input type="text" class="form-control" name="wali_tmp_lahir" placeholder="Kota/Kabupaten" required>
+            <input type="text" class="form-control" name="wali_tmp_lahir" placeholder="Kota/Kabupaten">
           </div>
           <div class="col-md-2 col-xs-12 input-group date " data-date="" data-date-format="yyyy-mm-dd">
             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
@@ -341,25 +341,24 @@
         <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">27.&nbsp;&nbsp;Alamat</label>
           <div class="col-md-5 col-xs-12">
-            <textarea type="text" class="form-control" name="wali_alamat" required></textarea>
+            <textarea type="text" class="form-control" name="wali_alamat"></textarea>
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">28.&nbsp;&nbsp;No. Telp/HP</label>
           <div class="col-md-5 col-xs-12">
-            <input type="text" class="form-control numeric" name="wali_telp" maxlength="15" required>
+            <input type="text" class="form-control numeric" name="wali_telp" maxlength="15">
           </div>
         </div>
       </div>
   </div>
-  
 
   <div class="ln_solid"></div>
   <div class="form-group">
     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-4">
       <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
       <button class="btn btn-default" type="reset"><i class="fa fa-undo"></i> Reset</button>
-      <button class="btn btn-danger" type="button"><i class="fa fa-times"></i> Cancel</button>
+      <a href="<?php echo base_url() ?>siswa" class="btn btn-danger" type="button"><i class="fa fa-times"></i> Cancel</a>
     </div>
   </div>
 </form>

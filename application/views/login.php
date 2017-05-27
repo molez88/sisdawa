@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Gentelella Alela! | </title>
+    <link rel="icon" type="image/png" href="<?php echo base_url() ?>assets/img/smp.png">
+    <title>Sistem Data Siswa | SMP Muhammadiyah 2 Gamping</title>
 
     <!-- Bootstrap -->
     <link href="<?php echo base_url();?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,23 +24,23 @@
 
   <body class="login">
     <div>
-      <a class="hiddenanchor" id="signup"></a>
-      <a class="hiddenanchor" id="signin"></a>
 
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-          <?php if ($this->session->flashdata('gagal_login')): ?>
-            <p class="alert alert-danger"><?php echo $this->session->flashdata('gagal_login'); ?></p>
-          <?php endif ?>
+          
           
             <?php echo form_open('users/login'); ?>
-              <h1>Login Form</h1>
-              <div>
+              <h2>SISTEM DATA SISWA</h2>
+              <h3>SMP Muhammadiyah 2 Gamping</h3>
+              <br>
+              <div class="form-group has-feedback">
                 <input type="text" name="username" class="form-control" placeholder="Username" />
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
               </div>
-              <div>
+              <div class="form-group has-feedback">
                 <input type="password" name="password" class="form-control" placeholder="Password" />
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
               </div>
               <div>
                 <button class="btn btn-primary submit btn-block">Login</button>
@@ -48,21 +48,13 @@
 
               <div class="clearfix"></div>
 
-              <div class="separator">
-                <p class="change_link">New to site?
-                  <a href="#signup" class="to_register"> Create Account </a>
-                </p>
-
-                <div class="clearfix"></div>
-                <br />
-
-                <div>
-                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
-                </div>
-              </div>
+              
             </form>
           </section>
+
+          <?php if ($this->session->flashdata('gagal_login')): ?>
+            <p class="alert alert-danger"><?php echo $this->session->flashdata('gagal_login'); ?></p>
+          <?php endif ?>
         </div>
 
         
