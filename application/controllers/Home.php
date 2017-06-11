@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Home extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
@@ -13,7 +13,7 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$data['judul']='Dashboard';
-		$property['konten']=$this->load->view('dashboard',$data,true);
+		$property['konten']=$this->load->view('home',$data,true);
 		$this->load->view('template', $property);
 	}
 }

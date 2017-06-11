@@ -25,6 +25,7 @@ class Dompdf_gen {
 		require_once APPPATH.'third_party/dompdf/dompdf_config.inc.php';
 		
 		$pdf = new DOMPDF();
+		$pdf->set_paper("A4");
 		
 		$CI =& get_instance();
 		$CI->dompdf = $pdf;

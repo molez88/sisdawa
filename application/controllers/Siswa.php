@@ -26,8 +26,7 @@ class Siswa extends CI_Controller {
 	}
 
 	
-	public function siswa_input()
-	{		
+	public function input(){		
 		$data['judul'] = 'Form Input Data Siswa';
 
 		$data['agama'] = $this->Siswa_model->getAgama()->result_array();
@@ -36,10 +35,10 @@ class Siswa extends CI_Controller {
 		$data['penghasilan'] = $this->Siswa_model->getPenghasilan()->result_array();
 		$data['status_dakel']=$this->db->anggota_enum('siswa','status_dakel');
 
-		$this->form_validation->set_rules('nisn', 'NISN', 'is_unique[siswa.nisn]|required|min_length[4]|max_length[4]');
+		$this->form_validation->set_rules('nis', 'NIS', 'is_unique[siswa.nis]|required|min_length[4]|max_length[4]');
 
 		if ($this->form_validation->run() == FALSE) {
-			$property['konten'] = $this->load->view('siswa/input',$data,TRUE);
+			$property['konten'] = $this->load->view('siswa/create',$data,TRUE);
 			$this->load->view('template',$property);
 		} else {
 
@@ -62,7 +61,7 @@ class Siswa extends CI_Controller {
 			}
 
 			$data_siswa = array(
-					'nisn' => $this->input->post('nisn'),
+					'nis' => $this->input->post('nis'),
 					'nama_lengkap' => $this->input->post('nama'),
 					'gender' => $this->input->post('gender'),
 					'tempat_lahir' => $this->input->post('tmp_lahir'),
@@ -79,7 +78,7 @@ class Siswa extends CI_Controller {
 			);
 
 			$data_ortu = array(
-					'nisn' => $this->input->post('nisn'),
+					'nis' => $this->input->post('nis'),
 					'ayah_nama' => $this->input->post('ayah_nama'),
 					'ayah_tempat_lahir' => $this->input->post('ayah_tmp_lahir'),
 					'ayah_tgl_lahir' => $this->input->post('ayah_tgl_lahir'),
@@ -101,7 +100,7 @@ class Siswa extends CI_Controller {
 			);
 
 			$data_wali = array(
-					'nisn' => $this->input->post('nisn'),
+					'nis' => $this->input->post('nis'),
 					'wali_nama' => $this->input->post('wali_nama'),
 					'wali_tempat_lahir' => $this->input->post('wali_tmp_lahir'),
 					'wali_tgl_lahir' => $this->input->post('wali_tgl_lahir'),
@@ -116,12 +115,9 @@ class Siswa extends CI_Controller {
 			$this->Siswa_model->simpandatasiswa($data_siswa,$data_ortu,$data_wali);
 			redirect('siswa','refresh');
 		}
-
-		
 	}
 
-	public function siswa_update($nisn)
-	{
+	public function update($nis){
 		$data['judul'] = 'Form Edit Data Siswa';
 
 		$data['agama'] = $this->Siswa_model->getAgama()->result_array();
@@ -129,10 +125,10 @@ class Siswa extends CI_Controller {
 		$data['pekerjaan'] = $this->Siswa_model->getPekerjaan()->result_array();
 		$data['penghasilan'] = $this->Siswa_model->getPenghasilan()->result_array();
 
-		$this->form_validation->set_rules('nisn', 'NISN', 'is_unique[siswa.nisn]|required|min_length[4]|max_length[4]');
+		$this->form_validation->set_rules('nis', 'nis', 'is_unique[siswa.nis]|required|min_length[4]|max_length[4]');
 
 		if ($this->form_validation->run() == FALSE) {
-			$data['siswa_nisn'] = $this->Siswa_model->getbyid($nisn);
+			$data['siswa_nis'] = $this->Siswa_model->getbynis($nis);
 			$property['konten'] = $this->load->view('siswa/update',$data,TRUE);
 			$this->load->view('template',$property);
 		} else {
@@ -156,6 +152,7 @@ class Siswa extends CI_Controller {
 			}
 
 			$data_siswa = array(
+					'nis' => $this->input->post('nis'),
 					'nama_lengkap' => $this->input->post('nama'),
 					'gender' => $this->input->post('gender'),
 					'tempat_lahir' => $this->input->post('tmp_lahir'),
@@ -172,6 +169,7 @@ class Siswa extends CI_Controller {
 			);
 
 			$data_ortu = array(
+					'nis' => $this->input->post('nis'),
 					'ayah_nama' => $this->input->post('ayah_nama'),
 					'ayah_tempat_lahir' => $this->input->post('ayah_tmp_lahir'),
 					'ayah_tgl_lahir' => $this->input->post('ayah_tgl_lahir'),
@@ -193,6 +191,7 @@ class Siswa extends CI_Controller {
 			);
 
 			$data_wali = array(
+					'nis' => $this->input->post('nis'),
 					'wali_nama' => $this->input->post('wali_nama'),
 					'wali_tempat_lahir' => $this->input->post('wali_tmp_lahir'),
 					'wali_tgl_lahir' => $this->input->post('wali_tgl_lahir'),
@@ -203,30 +202,32 @@ class Siswa extends CI_Controller {
 					'wali_alamat' => $this->input->post('wali_alamat'),
 					'wali_notelp' => $this->input->post('wali_telp')
 			);
-			$this->Siswa_model->editdatasiswa($data_siswa,$data_ortu,$data_wali,$nisn);
+			$this->Siswa_model->editdatasiswa($data_siswa,$data_ortu,$data_wali,$nis);
 			redirect('siswa','refresh');
 		}
 	}
 
-	public function siswa_hapus($nisn)
+	public function hapus($nis)
 	{
-		$this->Siswa_model->siswa_hapus($nisn);
+		$this->Siswa_model->siswa_hapus($nis);
 		redirect('siswa','refresh');
 	}
 
-	public function siswa_detail($nisn)
+	public function detail($nis)
 	{
 		$data['judul'] = 'Siswa';
-		$data['siswa_detail'] = $this->Siswa_model->getSiswaDetail($nisn);
-		$data['ayah_detail'] = $this->Siswa_model->getAyahDetail($nisn);
-		$data['ibu_detail'] = $this->Siswa_model->getIbuDetail($nisn);
-		$data['wali_detail'] = $this->Siswa_model->getWaliDetail($nisn);
+		$data['siswa_detail'] = $this->Siswa_model->getSiswaDetail($nis);
+		$data['ayah_detail'] = $this->Siswa_model->getAyahDetail($nis);
+		$data['ibu_detail'] = $this->Siswa_model->getIbuDetail($nis);
+		$data['wali_detail'] = $this->Siswa_model->getWaliDetail($nis);
 		$property['konten'] = $this->load->view('siswa/detail', $data, TRUE);
 		$this->load->view('template', $property);
 	}
 
 	public function printtt()
 	{
+		$for_tgl = date('d-F-Y');
+    $pdfFilePath = "Laporan_$for_tgl.pdf";
 		$this->load->view('test');
 		// Get output html
 		$html = $this->output->get_output();
@@ -237,7 +238,8 @@ class Siswa extends CI_Controller {
 		// Convert to PDF
 		$this->dompdf->load_html($html);
 		$this->dompdf->render();
-		$this->dompdf->stream("welcome.pdf");
+		$this->dompdf->get_canvas();
+		$this->dompdf->stream($pdfFilePath,array("Attachment"=>0));
 	}
 
 }

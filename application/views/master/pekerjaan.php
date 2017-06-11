@@ -8,7 +8,7 @@
   </div>
   <!-- /.panel-heading -->
   <div class="panel-body">
-    <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+    <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
         <thead>
           <tr>
             <th width="7%">No.</th>
@@ -58,7 +58,7 @@
   $(document).ready(function() {
 
     //datatables
-    table = $('#datatable-responsive').DataTable({ 
+    table = $('#datatable').DataTable({ 
 
         "processing": true, //Feature control the processing indicator.
         "serverSide": true, //Feature control DataTables' server-side processing mode.

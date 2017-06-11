@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 //$route['siswa/:any'] = 'siswa/siswa_detail/$i';
 
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'home';
 
 
 

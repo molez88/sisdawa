@@ -1,5 +1,5 @@
 <!-- <form class="form-horizontal form-label-left" method="post" action="<?php echo base_url() ?>siswa/siswa_input" enctype="multipart/form-data"> -->
-<?php echo form_open_multipart('siswa/siswa_input',array('class'=> 'form-horizontal form-label-left')); ?>
+<?php echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-label-left')); ?>
   <div class="panel panel-info">
     <div class="panel-heading">
       <h4 class="panel-title">
@@ -12,7 +12,7 @@
         <div class="form-group">
           <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">1.&nbsp;&nbsp;NIS</label>
           <div class="col-md-3 col-xs-12">
-            <input type="text" class="form-control" id="nisn" name="nisn" maxlength="4" required>
+            <input type="text" class="form-control" id="nisn" name="nis" maxlength="4" required>
           </div>
             <em id="pesan" style="color: red"></em>
         </div>

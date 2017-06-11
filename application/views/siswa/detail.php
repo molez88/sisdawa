@@ -6,7 +6,7 @@
 				<img src="<?php echo base_url('assets/img/siswa/'.$siswa_detail['foto_siswa'])?>" class="img-responsive avatar-view">
 				</div>
 				<strong><h3><?php echo $siswa_detail['nama_lengkap'] ?></h3></strong>
-				<?php echo $siswa_detail['nisn']?>
+				<?php echo $siswa_detail['nis']?>
 				<hr>
 				<h2>
 					<i class="fa fa-phone"></i> 
@@ -39,7 +39,7 @@
 	          			<tr>
 		          			<td width="25%">NIS</td>
 		          			<td>:</td>
-		          			<td width="73%"><?php echo $siswa_detail['nisn'] ?></td>
+		          			<td width="73%"><?php echo $siswa_detail['nis'] ?></td>
 		          		</tr>
 		          		<tr>
 		          		<tr>

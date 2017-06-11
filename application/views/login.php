@@ -21,11 +21,10 @@
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>assets/build/css/custom.min.css" rel="stylesheet">
   </head>
-
   <body class="login">
     <div>
-
       <div class="login_wrapper">
+
         <div class="animate form login_form">
           <section class="login_content">
           
@@ -35,11 +34,11 @@
               <h3>SMP Muhammadiyah 2 Gamping</h3>
               <br>
               <div class="form-group has-feedback">
-                <input type="text" name="username" class="form-control" placeholder="Username" />
+                <input type="text" name="username" class="form-control" placeholder="Username" required= />
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
               </div>
               <div class="form-group has-feedback">
-                <input type="password" name="password" class="form-control" placeholder="Password" />
+                <input type="password" name="password" class="form-control" placeholder="Password" required />
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
               </div>
               <div>
@@ -53,7 +52,7 @@
           </section>
 
           <?php if ($this->session->flashdata('gagal_login')): ?>
-            <p class="alert alert-danger"><?php echo $this->session->flashdata('gagal_login'); ?></p>
+            <div class="alert alert-danger"><strong><?php echo $this->session->flashdata('gagal_login'); ?></strong></div>
           <?php endif ?>
         </div>
 

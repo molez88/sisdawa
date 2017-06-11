@@ -10,11 +10,15 @@
         </select>
       </div>
       <div class="col-md-1">
-        <button type="submit" class="btn btn-success"><li class="fa fa-search"></li> Cari</button>
+        <button type="submit" class="btn btn-info"><li class="fa fa-search"></li> Cari</button>
       </div>
 
-      <div class="col-md-2 col-md-offset-7">
-        <a href="<?php echo base_url() ?>siswa/siswa_input" class="btn btn-success"><i class="fa fa-plus"></i> Tambah Siswa</a>
+      <div class="col-md-1 col-md-offset-1">
+        <a href="<?php echo base_url() ?>siswa/printtt" type="button" class="btn btn-default"><i class="glyphicon glyphicon-print"></i> Opsi Print</a>
+      </div>
+
+      <div class="col-md-2 col-md-offset-5">
+        <a href="<?php echo base_url() ?>siswa/input" class="btn btn-success"><i class="fa fa-plus"></i> Tambah Siswa</a>
       </div>
     </div>
     
@@ -23,9 +27,10 @@
   
 <?php 
 if(count($siswa)){ ?>
-<table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+<table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
     <thead>
       <tr>
+        <th>Foto</th>
         <th>NIS</th>
         <th>Nama Lengkap</th>
         <th>Tempat dan Tanggal Lahir</th>
@@ -38,15 +43,16 @@ if(count($siswa)){ ?>
       <?php 
       foreach ($siswa as $result) { ?>
         <tr>
-          <td><?php echo $result['nisn'] ?></td>
+          <td><img src="<?php echo base_url('assets/img/siswa/'.$result['foto_siswa'])?>" class="img-responsive avatar-view" width="120px"></td>
+          <td><?php echo $result['nis'] ?></td>
           <td><?php echo $result['nama_lengkap'] ?></td>
           <td><?php echo $result['tempat_lahir'].', '.tgl_indo($result['tgl_lahir']) ?></td>
           <td><?php echo $result['gender'] ?></td>
           <td><?php echo $result['telp'] ?></td>
           <td align="center">
-            <a href="<?php echo base_url('siswa/siswa_detail/'.$result['nisn'])?>" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-folder-open"></i> Detail</a>
-            <a href="<?php echo base_url()?>siswa/siswa_update/<?php echo $result['nisn'] ?>" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a>
-            <a href="<?php echo base_url('siswa/siswa_hapus/'.$result['nisn'])?>" onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a>
+            <a href="<?php echo base_url('siswa/detail/'.$result['nis'])?>" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-folder-open"></i> Detail</a>
+            <a href="<?php echo base_url()?>siswa/update/<?php echo $result['nis'] ?>" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+            <a href="<?php echo base_url('siswa/hapus/'.$result['nis'])?>" onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a>
           </td>
         </tr>
         
@@ -62,22 +68,3 @@ if(count($siswa)){ ?>
   </div>
 <?php }
 ?>
-
-<div class="col-md-1">
-  <button class="btn btn-default" type="button" name="print" value="Print" onclick="printPage('datatable-responsive');"><li class="fa fa-print"></li> Print</a>
-</div>
-<script type="text/javascript">
-function printPage(id)
-{
-   var html="<html>";
-   html+= document.getElementById(id).innerHTML;
-   html+="</html>";
-
-   var printWin = window.open('','','');
-   printWin.document.write(html);
-   printWin.document.close();
-   printWin.focus();
-   printWin.print();
-   printWin.close();
-}
-</script>

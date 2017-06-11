@@ -60,7 +60,7 @@ class Users extends CI_Controller {
 					);
 					$this->session->set_userdata($user_data);
 				}
-				redirect('welcome','refresh');
+				redirect('home','refresh');
 			}else{
 				$this->session->set_flashdata('gagal_login', 'Kombinasi Username dan Password salah');
 				redirect('users/login');
@@ -74,6 +74,7 @@ class Users extends CI_Controller {
 		session_unset('nama');
 		session_unset('foto');
 		session_unset('level');
+		//$this->session->sess_destroy();
 
 		redirect('users/login','refresh');
 	}
