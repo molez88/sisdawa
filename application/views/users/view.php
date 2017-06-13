@@ -25,9 +25,8 @@
               <td><?php echo $users['nama'] ?></td>
               <td><?php echo $users['email'] ?></td>
               <td><?php echo $users['level'] ?></td>
-              <td width="15%">
-                <a href="<?php echo base_url('users/editusers/'.$users['username']) ?>" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-edit"></i> Edit</a>
-                <a href="" onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i> Hapus</a>
+              <td width="10" align="center">
+                <a href="<?php echo base_url('users/hapususer/'.$users['id'])?>" onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i> Hapus</a>
               </td>
             </tr>
           <?php }

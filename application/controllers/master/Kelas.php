@@ -6,6 +6,7 @@ class Kelas extends CI_Controller {
 	{
 		parent::__construct();
 		if ($this->session->userdata('logged_in') == FALSE || $this->session->userdata('level') != 'admin') {
+			echo "<script language=javascript>alert('Maaf. Anda tidak memiliki akses.');</script>";
 			redirect('users/login','refresh');
 		}
 		$this->load->model('Kelas_model');

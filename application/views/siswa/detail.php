@@ -3,7 +3,13 @@
 		<div class="panel panel-info">
 			<div class="panel-body" style="text-align: center">
 				<div class="profile_img">
-				<img src="<?php echo base_url('assets/img/siswa/'.$siswa_detail['foto_siswa'])?>" class="img-responsive avatar-view">
+					<?php if($siswa_detail['foto_siswa']){ ?>
+              <img src="<?php echo base_url('assets/img/siswa/'.$siswa_detail['foto_siswa'])?>" class="img-responsive avatar-view">
+            <?php 
+            }else{
+              echo "(No Photo)";
+            } ?>
+				
 				</div>
 				<strong><h3><?php echo $siswa_detail['nama_lengkap'] ?></h3></strong>
 				<?php echo $siswa_detail['nis']?>

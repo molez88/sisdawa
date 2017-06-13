@@ -43,7 +43,7 @@ if(count($transaksi)){ ?>
       <?php 
       foreach ($transaksi as $transaksis) { ?>
         <tr>
-          <td><?php echo $transaksis['nisn'] ?></td>
+          <td><?php echo $transaksis['nis'] ?></td>
           <td><?php echo $transaksis['nama_lengkap'] ?></td>
           <td><?php echo $transaksis['nm_kelas'] ?></td>
           <td><?php echo $transaksis['th_ajaran'] ?></td>

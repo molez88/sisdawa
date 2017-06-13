@@ -5,13 +5,13 @@ class Users extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		
 		$this->load->model('Users_model');
 	}
 
 	public function index()
 	{
 		if ($this->session->userdata('logged_in') == FALSE || $this->session->userdata('level') != 'admin') {
+			echo "<script language=javascript>alert('Maaf. Anda tidak memiliki akses.');</script>";
 			redirect('users/login','refresh');
 		}
 
@@ -24,21 +24,57 @@ class Users extends CI_Controller {
 
 	public function tambahusers()
 	{
+		if ($this->session->userdata('logged_in') == FALSE || $this->session->userdata('level') != 'admin') {
+			echo "<script language=javascript>alert('Maaf. Anda tidak memiliki akses.');</script>";
+			redirect('users/login','refresh');
+		}
 		$data['judul'] = 'Form Tambah User';
 
-		$this->form_validation->set_rules('username', 'username','required|is_unique');
-		$this->form_validation->set_rules('password', 'password','required');
-		$this->form_validation->set_rules('nama', 'nama','required');
-		$this->form_validation->set_rules('email', 'email','required');
+		$this->form_validation->set_rules('username', 'username','required');
+		// $this->form_validation->set_rules('email', 'email','required|is_unique');
 		if ($this->form_validation->run() == FALSE) {
 			$property['konten'] = $this->load->view('users/input',$data,TRUE);
 			$this->load->view('template',$property);
 		} else {
-			$this->Transaksi_model->transaksi_input();
-			redirect('transaksikelas','refresh');
+			$this->Users_model->users_input();
+			redirect('users','refresh');
 		}
 	}
+	public function hapususer($id)
+	{
+		$this->Users_model->user_hapus($id);
+		redirect('users','refresh');
+	}
+
+	// public function editusers($id=0)
+	// {
+	// 	if ($this->session->userdata('logged_in') == FALSE || $this->session->userdata('level') != 'admin') {
+	// 		echo "<script language=javascript>alert('Maaf. Anda tidak memiliki akses.');</script>";
+	// 		redirect('users/login','refresh');
+	// 	}
+	// 	$data['judul'] = 'Form Edit User';
+
+
+	// 	$this->form_validation->set_rules('username', 'username','required');
+	// 	// $this->form_validation->set_rules('email', 'email','required|is_unique');
+	// 	if ($this->form_validation->run() == FALSE) {
+	// 		$data['user_id'] = $this->Users_model->getUserId($id);
+	// 		$property['konten'] = $this->load->view('users/edit',$data,TRUE);
+	// 		$this->load->view('template',$property);
+	// 	} else {
+	// 		$this->Users_model->users_edit($id);
+	// 		redirect('users','refresh');
+	// 	}
+	// }
 	
+	public function profile($username='')
+	{
+		$data['judul'] = 'Profile User';
+		$data['users'] = $this->Users_model->user_profile($username);
+		$property['konten'] = $this->load->view('users/profile', $data, TRUE);
+		$this->load->view('template', $property);
+	}
+
 	public function login()
 	{
 		$this->form_validation->set_rules('username', 'Username', 'required');
@@ -70,13 +106,13 @@ class Users extends CI_Controller {
 	}
 	public function logout()
 	{
-		session_unset('username');
-		session_unset('nama');
-		session_unset('foto');
-		session_unset('level');
-		//$this->session->sess_destroy();
+		// session_unset('username');
+		// session_unset('nama');
+		// session_unset('foto');
+		// session_unset('level');
+		$this->session->sess_destroy();
 
-		redirect('users/login','refresh');
+		redirect('users/login',TRUE);
 	}
 
 }

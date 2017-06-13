@@ -2,12 +2,12 @@
 	<div class="panel-body row">
   <div class="col-md-7 col-sm-7">
     <div class="form-group">
-      <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">1.&nbsp;&nbsp;NISN</label>
+      <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">1.&nbsp;&nbsp;NIS</label>
       <div class="col-md-3">
-        <select class="form-control" name="nisn" required>
+        <select class="form-control" name="nis" required>
         <option value="">NIS</option>
         <?php foreach ($siswa as $siswas) { ?>
-          <option value="<?php echo $siswas['nisn'] ?>"><?php echo $siswas['nisn'] ?></option>
+          <option value="<?php echo $siswas['nis'] ?>"><?php echo $siswas['nis'] ?></option>
         <?php  } ?>
         </select>
       </div>

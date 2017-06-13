@@ -5,6 +5,10 @@ class Transaksikelas extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		if ($this->session->userdata('logged_in') == FALSE) {
+			echo "<script language=javascript>alert('Maaf. Anda tidak memiliki akses.');</script>";
+			redirect('users/login','refresh');
+		}
 		$this->load->model('Transaksi_model');
 		$this->load->helper('tanggal');
 	}
@@ -32,7 +36,7 @@ class Transaksikelas extends CI_Controller {
 		$data['siswa'] = $this->Transaksi_model->getSiswa()->result_array();
 		$data['th_akademik'] = $this->Transaksi_model->getThakademik()->result_array();
 
-		$this->form_validation->set_rules('nisn', 'nisn','required');
+		$this->form_validation->set_rules('nis', 'nis','required');
 		$this->form_validation->set_rules('id_kelas', 'id_kelas','required');
 		$this->form_validation->set_rules('id_th_akademik', 'id_th_akademik','required');
 		if ($this->form_validation->run() == FALSE) {

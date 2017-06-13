@@ -8,8 +8,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" type="image/png" href="<?php echo base_url() ?>assets/img/smp.png">
 		<title>Sistem Data Siswa | SMP Muhammadiyah 2 Gamping</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet">
 
 		<!-- Bootstrap -->
 		<link href="<?php echo base_url()?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -109,7 +107,7 @@
 										<span class=" fa fa-angle-down"></span>
 									</a>
 									<ul class="dropdown-menu dropdown-usermenu pull-right">
-										<li><a href="javascript:;"> Profile</a></li>
+										<li><a href="<?php echo base_url('users/profile/'.$this->session->userdata('username')) ?>"> Profile</a></li>
 										<li><a href="<?php echo base_url(); ?>users/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
 									</ul>
 								</li>

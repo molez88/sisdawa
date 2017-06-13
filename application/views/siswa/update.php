@@ -1,5 +1,5 @@
 <!-- <form class="form-horizontal form-label-left" method="post" action="<?php echo base_url() ?>siswa/siswa_input" enctype="multipart/form-data"> -->
-<?php echo form_open_multipart('siswa/update/',array('class'=> 'form-horizontal form-label-left')); ?>
+<?php echo form_open_multipart('siswa/update',array('class'=> 'form-horizontal form-label-left')); ?>
   <div class="panel panel-info">
     <div class="panel-heading">
       <h4 class="panel-title">
@@ -12,7 +12,7 @@
         <div class="form-group">
           <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">1.&nbsp;&nbsp;NIS</label>
           <div class="col-md-3 col-xs-12">
-            <input type="text" class="form-control" id="nisn" name="nis" maxlength="4"  value="<?php echo $siswa_nis['nis'] ?>" required>
+            <input type="text" class="form-control" id="nisn" name="nis" maxlength="4"  value="<?php echo $siswa_nis['nis'] ?>" readonly>
           </div>
             <em id="pesan" style="color: red"></em>
         </div>
@@ -26,10 +26,10 @@
           <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">3.&nbsp;&nbsp;Jenis Kelamin</label>
           <div class="col-md-5 col-xs-12">
             <label class="radio-inline">
-              <input type="radio" name="gender" value="Laki-laki" <?php if($siswa_nis['gender']=='Laki-laki'){echo 'checked="checked"';}?> required >Laki-laki
+              <input type="radio" name="gender" value="L" <?php if($siswa_nis['gender']=='L'){echo 'checked="checked"';}?> required >Laki-laki
             </label>
             <label class="radio-inline">
-              <input type="radio" name="gender" value="Perempuan" <?php if($siswa_nis['gender']=='Perempuan'){echo 'checked="checked"';} ?> >Perempuan
+              <input type="radio" name="gender" value="P" <?php if($siswa_nis['gender']=='P'){echo 'checked="checked"';} ?> >Perempuan
             </label>
           </div>
         </div>
@@ -101,9 +101,21 @@
             <input type="text" class="form-control" name="riwayat_kesehatan" value="<?php echo $siswa_nis['riwayat_kesehatan'] ?>">
           </div>
         </div>
+        <div class="form-group">
+          <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">13.&nbsp;&nbsp;Tahun Masuk</label>
+          <div class="col-md-7 col-xs-12">
+            <input type="text" class="form-control" name="thn_masuk" value="<?php echo $siswa_nis['thn_masuk'] ?>">
+          </div>
+        </div>
       </div>
       <div class="col-md-3 col-sm-3">
-        <img src="<?php echo base_url('assets/img/siswa/'.$siswa_nis['foto_siswa']);?>" class="img-responsive">
+        <input type="hidden" name="path" value="<?php echo $siswa_nis['foto_siswa'] ?>">
+        <?php if ($siswa_nis['foto_siswa']): ?>
+          <img src="<?php echo base_url('assets/img/siswa/'.$siswa_nis['foto_siswa']);?>" class="img-responsive">
+        <?php else: ?>
+          <img src="<?php echo base_url('assets/img/default.png');?>" class="img-responsive">
+        <?php endif ?>
+        
         <input type="file" class="form-control" name="userfile" size="20">
       </div>
     </div>
@@ -116,13 +128,13 @@
     </div>
       <div class="panel-body">
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">13.&nbsp;&nbsp;Nama</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">14.&nbsp;&nbsp;Nama</label>
           <div class="col-md-5 col-xs-12">
             <input type="text" class="form-control" name="ayah_nama" value="<?php echo $siswa_nis['ayah_nama'] ?>" required>
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">14.&nbsp;&nbsp;Tempat dan Tanggal Lahir</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">15.&nbsp;&nbsp;Tempat dan Tanggal Lahir</label>
           <div class="col-md-2 col-xs-12">
             <input type="text" class="form-control" name="ayah_tmp_lahir" placeholder="Kota/Kabupaten" value="<?php echo $siswa_nis['ayah_tempat_lahir'] ?>">
           </div>
@@ -132,7 +144,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">15.&nbsp;&nbsp;Agama</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">16.&nbsp;&nbsp;Agama</label>
           <div class="col-md-5">
             <select class="form-control" name="ayah_id_agama" required>
             <option value="">[--Pilih Agama--]</option>
@@ -143,7 +155,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">16.&nbsp;&nbsp;Pendidikan</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">17.&nbsp;&nbsp;Pendidikan</label>
           <div class="col-md-5">
             <select class="form-control" name="ayah_id_pendidikan" required>
             <option value="">[--Pilih Pendidikan--]</option>
@@ -154,7 +166,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">17.&nbsp;&nbsp;Pekerjaan</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">18.&nbsp;&nbsp;Pekerjaan</label>
           <div class="col-md-5">
             <select class="form-control" name="ayah_id_pekerjaan" required>
             <option value="">[--Pilih Pekerjaan--]</option>
@@ -165,7 +177,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">18.&nbsp;&nbsp;Penghasilan</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">19.&nbsp;&nbsp;Penghasilan</label>
           <div class="col-md-5">
             <select class="form-control" name="ayah_id_penghasilan" required>
             <option value="">[--Pilih Penghasilan--]</option>
@@ -176,13 +188,13 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">19.&nbsp;&nbsp;Alamat</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">20.&nbsp;&nbsp;Alamat</label>
           <div class="col-md-5 col-xs-12">
             <textarea type="text" class="form-control" name="ayah_alamat"><?php echo $siswa_nis['ayah_alamat'] ?></textarea>
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">20.&nbsp;&nbsp;No. Telp/HP</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">21.&nbsp;&nbsp;No. Telp/HP</label>
           <div class="col-md-5 col-xs-12">
             <input type="text" class="form-control numeric" name="ayah_telp" maxlength="15" value="<?php echo $siswa_nis['ayah_telp'] ?>">
           </div>
@@ -197,13 +209,13 @@
     </div>
       <div class="panel-body">
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">21.&nbsp;&nbsp;Nama</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">22.&nbsp;&nbsp;Nama</label>
           <div class="col-md-5 col-xs-12">
             <input type="text" class="form-control" name="ibu_nama" value="<?php echo $siswa_nis['ibu_nama'] ?>" required>
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">22.&nbsp;&nbsp;Tempat dan Tanggal Lahir</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">23.&nbsp;&nbsp;Tempat dan Tanggal Lahir</label>
           <div class="col-md-2 col-xs-12">
             <input type="text" class="form-control" name="ibu_tmp_lahir" placeholder="Kota/Kabupaten" value="<?php echo $siswa_nis['ibu_tempat_lahir'] ?>">
           </div>
@@ -213,7 +225,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">23.&nbsp;&nbsp;Agama</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">24.&nbsp;&nbsp;Agama</label>
           <div class="col-md-5">
             <select class="form-control" name="ibu_id_agama" required>
             <option value="">[--Pilih Agama--]</option>
@@ -224,7 +236,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">24.&nbsp;&nbsp;Pendidikan</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">25.&nbsp;&nbsp;Pendidikan</label>
           <div class="col-md-5">
             <select class="form-control" name="ibu_id_pendidikan" required>
             <option value="">[--Pilih Pendidikan--]</option>
@@ -235,7 +247,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">25.&nbsp;&nbsp;Pekerjaan</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">26.&nbsp;&nbsp;Pekerjaan</label>
           <div class="col-md-5">
             <select class="form-control" name="ibu_id_pekerjaan" required>
             <option value="">[--Pilih Pekerjaan--]</option>
@@ -246,7 +258,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">26.&nbsp;&nbsp;Penghasilan</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">27.&nbsp;&nbsp;Penghasilan</label>
           <div class="col-md-5">
             <select class="form-control" name="ibu_id_penghasilan" required>
             <option value="">[--Pilih Penghasilan--]</option>
@@ -257,13 +269,13 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">27.&nbsp;&nbsp;Alamat</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">28.&nbsp;&nbsp;Alamat</label>
           <div class="col-md-5 col-xs-12">
             <textarea type="text" class="form-control" name="ibu_alamat"><?php echo $siswa_nis['ibu_alamat'] ?></textarea>
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">28.&nbsp;&nbsp;No. Telp/HP</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">29.&nbsp;&nbsp;No. Telp/HP</label>
           <div class="col-md-5 col-xs-12">
             <input type="text" class="form-control numeric" name="ibu_telp" maxlength="15" value="<?php echo $siswa_nis['ibu_telp'] ?>">
           </div>
@@ -279,13 +291,13 @@
     
       <div class="panel-body">
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">21.&nbsp;&nbsp;Nama</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">30.&nbsp;&nbsp;Nama</label>
           <div class="col-md-5 col-xs-12">
             <input type="text" class="form-control" name="wali_nama" value="<?php echo $siswa_nis['wali_nama'] ?>" required>
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">22.&nbsp;&nbsp;Tempat dan Tanggal Lahir</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">31.&nbsp;&nbsp;Tempat dan Tanggal Lahir</label>
           <div class="col-md-2 col-xs-12">
             <input type="text" class="form-control" name="wali_tmp_lahir" placeholder="Kota/Kabupaten" value="<?php echo $siswa_nis['wali_tempat_lahir'] ?>">
           </div>
@@ -295,7 +307,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">23.&nbsp;&nbsp;Agama</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">32.&nbsp;&nbsp;Agama</label>
           <div class="col-md-5">
             <select class="form-control" name="wali_id_agama" required>
             <option value="">[--Pilih Agama--]</option>
@@ -306,7 +318,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">24.&nbsp;&nbsp;Pendidikan</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">33.&nbsp;&nbsp;Pendidikan</label>
           <div class="col-md-5">
             <select class="form-control" name="wali_id_pendidikan" required>
             <option value="">[--Pilih Pendidikan--]</option>
@@ -317,7 +329,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">25.&nbsp;&nbsp;Pekerjaan</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">34.&nbsp;&nbsp;Pekerjaan</label>
           <div class="col-md-5">
             <select class="form-control" name="wali_id_pekerjaan" required>
             <option value="">[--Pilih Pekerjaan--]</option>
@@ -328,7 +340,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">26.&nbsp;&nbsp;Penghasilan</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">35.&nbsp;&nbsp;Penghasilan</label>
           <div class="col-md-5">
             <select class="form-control" name="wali_id_penghasilan" required>
             <option value="">[--Pilih Penghasilan--]</option>
@@ -339,13 +351,13 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">27.&nbsp;&nbsp;Alamat</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">36.&nbsp;&nbsp;Alamat</label>
           <div class="col-md-5 col-xs-12">
             <textarea type="text" class="form-control" name="wali_alamat"><?php echo $siswa_nis['wali_alamat'] ?></textarea>
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">28.&nbsp;&nbsp;No. Telp/HP</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">37.&nbsp;&nbsp;No. Telp/HP</label>
           <div class="col-md-5 col-xs-12">
             <input type="text" class="form-control numeric" name="wali_telp" maxlength="15" value="<?php echo $siswa_nis['wali_notelp'] ?>">
           </div>

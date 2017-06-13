@@ -52,12 +52,13 @@ class Siswa_model extends CI_Model {
 
 	public function editdatasiswa($data_siswa,$data_ortu,$data_wali,$nis)
 	{
+		$nis = $this->input->post('nis');
 		$this->db->trans_start();
 		$this->db->where('nis', $nis);
 		$this->db->update('siswa', $data_siswa);
 
 		$this->db->where('nis', $nis);
-		$this->db->update('siswa_ortu', $siswa_ortu);
+		$this->db->update('siswa_ortu', $data_ortu);
 
 		$this->db->where('nis', $nis);
 		$this->db->update('siswa_wali', $data_wali);
