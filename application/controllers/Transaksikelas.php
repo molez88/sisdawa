@@ -44,8 +44,16 @@ class Transaksikelas extends CI_Controller {
 			$this->load->view('template',$property);
 		} else {
 			$this->Transaksi_model->transaksi_input();
+			$this->session->set_flashdata('insert_transaksi', 'Transaksi kelas berhasil ditambahkan');
 			redirect('transaksikelas','refresh');
 		}
+	}
+
+	public function hapus($id)
+	{
+		$this->Transaksi_model->hapus($id);
+		$this->session->set_flashdata('delete_transaksi', 'Transaksi kelas berhasil dihapus');
+		redirect('Transaksikelas','refresh');
 	}
 
 }

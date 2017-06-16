@@ -125,7 +125,33 @@
               <div class="clearfix"></div>
             </div>
             <div class="x_content">
-            	<?php echo $konten; ?>
+
+            	<?php 
+            	if ($this->session->flashdata('insert_siswa')) { ?>
+            		<p class="alert alert-success"><b><?php echo $this->session->flashdata('insert_siswa'); ?></b></p>
+            	<?php }
+
+            	if ($this->session->flashdata('update_siswa')) { ?>
+            		<p class="alert alert-success"><b><?php echo $this->session->flashdata('update_siswa'); ?></b></p>
+            	<?php }
+
+            	if ($this->session->flashdata('delete_siswa')) { ?>
+            		<p class="alert alert-success"><b><?php echo $this->session->flashdata('delete_siswa'); ?></b></p>
+            	<?php }
+
+            	if ($this->session->flashdata('insert_transaksi')) { ?>
+            		<p class="alert alert-success"><b><?php echo $this->session->flashdata('insert_transaksi'); ?></b></p>
+            	<?php }
+
+            	if ($this->session->flashdata('delete_transaksi')) { ?>
+            		<p class="alert alert-success"><b><?php echo $this->session->flashdata('delete_transaksi'); ?></b></p>
+            	<?php }
+
+            	if ($this->session->flashdata('image_error')) { ?>
+            		<div class="alert alert-danger"><?php echo $this->session->flashdata('image_error'); ?></div>
+            	<?php }
+
+            	echo $konten; ?>
             </div>
           </div>
 				</div>

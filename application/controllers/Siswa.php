@@ -17,13 +17,14 @@ class Siswa extends CI_Controller {
 	{
 		$data['judul'] = 'Data Siswa';
 		$data['kelas'] = $this->Siswa_model->getKelas();
-		
+		$data['thn_akademik'] = $this->Siswa_model->getThAkademik();
 		
 
 		$kelas = $this->input->post('kelas');
+		$thn_akademik = $this->input->post('thn_akademik');
 
 		//$data['hasil'] = $this->Siswa_model->findbykelas($kelas)->result_array();
-	  $data['siswa'] = $this->Siswa_model->semuasiswa($kelas)->result_array();
+	  $data['siswa'] = $this->Siswa_model->semuasiswa($kelas,$thn_akademik)->result_array();
 		
 		$property['konten'] = $this->load->view('siswa/view',$data,TRUE);
 		$this->load->view('template',$property);
@@ -59,7 +60,8 @@ class Siswa extends CI_Controller {
 				$this->load->library('upload', $config);
 				
 				if ( ! $this->upload->do_upload()){
-					$error = array('error' => $this->upload->display_errors());
+					$this->session->set_flashdata('image_error', $this->upload->display_errors());
+					redirect('siswa/input','refresh');
 				}
 				else{
 					$data = array('upload_data' => $this->upload->data());
@@ -80,6 +82,7 @@ class Siswa extends CI_Controller {
 					'telp' => $this->input->post('telp'),
 					'email' => $this->input->post('email'),
 					'riwayat_kesehatan' => $this->input->post('riwayat_kesehatan'),
+					'thn_masuk' => $this->input->post('thn_masuk'),
 					'foto_siswa' => $foto
 				);
 
@@ -118,6 +121,8 @@ class Siswa extends CI_Controller {
 						'wali_notelp' => $this->input->post('wali_telp')
 				);
 			}else{
+
+				
 				$data_siswa = array(
 					'nis' => $this->input->post('nis'),
 					'nama_lengkap' => $this->input->post('nama'),
@@ -131,7 +136,8 @@ class Siswa extends CI_Controller {
 					'jml_saudara' => $this->input->post('jml_saudara'),
 					'telp' => $this->input->post('telp'),
 					'email' => $this->input->post('email'),
-					'riwayat_kesehatan' => $this->input->post('riwayat_kesehatan')
+					'riwayat_kesehatan' => $this->input->post('riwayat_kesehatan'),
+					'thn_masuk' => $this->input->post('thn_masuk')
 				);
 
 				$data_ortu = array(
@@ -170,8 +176,9 @@ class Siswa extends CI_Controller {
 				);
 			}
 
-			$this->Siswa_model->simpandatasiswa($data_siswa,$data_ortu,$data_wali);
-			redirect('siswa','refresh');
+				$this->Siswa_model->simpandatasiswa($data_siswa,$data_ortu,$data_wali);
+				$this->session->set_flashdata('insert_siswa', 'Data siswa berhasil dimasukkan');
+				redirect('siswa','refresh');
 		}
 	}
 
@@ -201,7 +208,8 @@ class Siswa extends CI_Controller {
 				$this->load->library('upload', $config);
 				
 				if ( ! $this->upload->do_upload()){
-					$error = array('error' => $this->upload->display_errors());
+					$this->session->set_flashdata('image_error', $this->upload->display_errors());
+					redirect('siswa/update/'.$nis,'refresh');
 				}
 				else{
 					$data = array('upload_data' => $this->upload->data());
@@ -309,6 +317,7 @@ class Siswa extends CI_Controller {
 			}
 			
 			$this->Siswa_model->editdatasiswa($data_siswa,$data_ortu,$data_wali,$nis);
+			$this->session->set_flashdata('update_siswa', 'Data siswa berhasil diubah');
 			redirect('siswa','refresh');
 		}
 	}
@@ -316,6 +325,7 @@ class Siswa extends CI_Controller {
 	public function hapus($nis)
 	{
 		$this->Siswa_model->siswa_hapus($nis);
+		$this->session->set_flashdata('delete_siswa', 'Data siswa berhasil dihapus');
 		redirect('siswa','refresh');
 	}
 
@@ -351,15 +361,32 @@ class Siswa extends CI_Controller {
 	{
 		$data['judul'] = 'Laporan Siswa';
 		$data['kelas'] = $this->Siswa_model->getKelas();
+		$data['thn_akademik'] = $this->Siswa_model->getThAkademik();
 		
 		
 
 		$kelas = $this->input->post('kelas');
+		$thn_akademik = $this->input->post('thn_akademik');
+
+		//$data['hasil'] = $this->Siswa_model->findbykelas($kelas)->result_array();
+	  $data['siswa'] = $this->Siswa_model->semuasiswa($kelas,$thn_akademik)->result_array();
+		
+		$property['konten'] = $this->load->view('siswa/laporan_view',$data);
+	}
+
+	public function export_excel($kelas)
+	{
+		//$data['judul'] = 'Laporan Siswa';
+		//$data['kelas'] = $this->Siswa_model->getKelas();
+		
+		
+
+		//$kelas = $this->input->post('kelas');
 
 		//$data['hasil'] = $this->Siswa_model->findbykelas($kelas)->result_array();
 	  $data['siswa'] = $this->Siswa_model->semuasiswa($kelas)->result_array();
 		
-		$property['konten'] = $this->load->view('siswa/laporan_view',$data);
+		$property['konten'] = $this->load->view('siswa/export_excel',$data);
 	}
 
 }

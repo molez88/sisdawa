@@ -18,14 +18,19 @@
         <?php endforeach ?>
         </select>
       </td>
+      <td width="150">
+        <select name="thn_akademik">
+        <option value="">Tahun Akademik</option>
+        <?php foreach ($thn_akademik->result_array() as $sthn_akademik): ?>
+          <option value="<?php echo $sthn_akademik['id_th_akademik']; ?>"><?php echo $sthn_akademik['th_ajaran']; ?></option>
+        <?php endforeach ?>
+        </select>
+      </td>
       <td width="100">
         <button type="submit">Cari</button>
       </td>
-      <td width="70">
+      <td width="860">
         <button onClick="document.getElementById('print').style.visibility = 'hidden'; window.print();" type="button">Print</button>
-      </td>
-      <td width="830">
-        <button onClick="document.getElementById('print').style.visibility = 'hidden'; window.print();" type="button">Export Exel</button>
       </td>
       <td>
         <button type="button" onClick="location.href='<?php echo base_url() ?>siswa'">Cancel</button>
@@ -45,7 +50,7 @@ if(count($siswa)){ ?>
         <th>Nama Lengkap</th>
         <th width="10">L/P</th>
         <th>Tempat dan Tanggal Lahir</th>
-        <th>No. Telp</th>
+        <th>Alamat</th>
       </tr>
     </thead>
     <tbody>
@@ -58,7 +63,7 @@ if(count($siswa)){ ?>
           <td><?php echo $result['nama_lengkap'] ?></td>
           <td align="center"><?php echo $result['gender'] ?></td>
           <td><?php echo $result['tempat_lahir'].', '.tgl_indo($result['tgl_lahir']) ?></td>
-          <td><?php echo $result['telp'] ?></td>
+          <td><?php echo $result['alamat'];?></td>
         </tr>
         
       <?php }

@@ -1,5 +1,6 @@
 <!-- <form class="form-horizontal form-label-left" method="post" action="<?php echo base_url() ?>siswa/siswa_input" enctype="multipart/form-data"> -->
-<?php echo form_open_multipart('siswa/update',array('class'=> 'form-horizontal form-label-left')); ?>
+
+<?php echo form_open_multipart('siswa/update/'.$siswa_nis['nis'],array('class'=> 'form-horizontal form-label-left')); ?>
   <div class="panel panel-info">
     <div class="panel-heading">
       <h4 class="panel-title">

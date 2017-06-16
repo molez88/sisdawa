@@ -1,5 +1,10 @@
 <!-- <form class="form-horizontal form-label-left" method="post" action="<?php echo base_url() ?>siswa/siswa_input" enctype="multipart/form-data"> -->
-<?php echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-label-left')); ?>
+
+
+<p><?php echo validation_errors();?></p>
+  
+<?php 
+echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-label-left')); ?>
   <div class="panel panel-info">
     <div class="panel-heading">
       <h4 class="panel-title">
@@ -12,7 +17,7 @@
         <div class="form-group">
           <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">1.&nbsp;&nbsp;NIS</label>
           <div class="col-md-3 col-xs-12">
-            <input type="text" class="form-control" id="nisn" name="nis" maxlength="4" required>
+            <input type="text" class="form-control" id="nis" name="nis" maxlength="4" required>
           </div>
             <em id="pesan" style="color: red"></em>
         </div>
@@ -103,9 +108,10 @@
         </div>
         <div class="form-group">
           <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">13.&nbsp;&nbsp;Tahun Masuk</label>
-          <div class="col-md-7 col-xs-12">
-            <input type="number" class="form-control" name="thn_masuk" required>
+          <div class="col-md-3 col-xs-12">
+            <input type="text" class="form-control" name="thn_masuk" id="thn_masuk" maxlength="4" required>
           </div>
+          <em id="pesan1" style="color: red"></em>
         </div>
       </div>
       <div class="col-md-3 col-sm-3">
@@ -381,11 +387,20 @@
     $(".input-group.date").datepicker({autoclose: true, todayHighlight: true});
     //called when key is pressed in textbox
 
-    $("#nisn").keypress(function (e) {
+    $("#nis").keypress(function (e) {
        //if the letter is not digit then display error and don't type anything
        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
           //display error message
           $("#pesan").html("Masukkan angka").show().fadeOut("slow");
+            return false;
+      }
+     });
+
+    $("#thn_masuk").keypress(function (e) {
+       //if the letter is not digit then display error and don't type anything
+       if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+          //display error message
+          $("#pesan1").html("Masukkan angka").show().fadeOut("slow");
             return false;
       }
      });

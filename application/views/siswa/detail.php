@@ -6,9 +6,9 @@
 					<?php if($siswa_detail['foto_siswa']){ ?>
               <img src="<?php echo base_url('assets/img/siswa/'.$siswa_detail['foto_siswa'])?>" class="img-responsive avatar-view">
             <?php 
-            }else{
-              echo "(No Photo)";
-            } ?>
+            }else{ ?>
+              <img src="<?php echo base_url('assets/img/default.png')?>" class="img-responsive avatar-view">
+            <?php } ?>
 				
 				</div>
 				<strong><h3><?php echo $siswa_detail['nama_lengkap'] ?></h3></strong>
@@ -24,8 +24,11 @@
 				</h2>
 			</div>
 		</div>
-		<div style="text-align: center;">
+		<div style="float: left;">
 			<a href="<?php echo base_url() ?>siswa" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Kembali</a>
+		</div>
+		<div style="float: right;">
+			<a href="<?php echo base_url()?>siswa/update/<?php echo $siswa_detail['nis'] ?>" type="button" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
 		</div>
 		
 		
@@ -97,6 +100,16 @@
 		          			<td width="25%">Email</td>
 		          			<td>:</td>
 		          			<td width="73%"><?php echo $siswa_detail['email'] ?></td>
+		          		</tr>
+		          		<tr>
+		          			<td width="25%">Riwayat Kesehatan</td>
+		          			<td>:</td>
+		          			<td width="73%"><?php echo $siswa_detail['riwayat_kesehatan']; ?></td>
+		          		</tr>
+		          		<tr>
+		          			<td width="25%">Tahun Masuk</td>
+		          			<td>:</td>
+		          			<td width="73%"><?php echo $siswa_detail['thn_masuk']; ?></td>
 		          		</tr>
 	          		</tbody>
 	          		

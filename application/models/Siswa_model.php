@@ -84,16 +84,24 @@ class Siswa_model extends CI_Model {
 
 		$this->db->where('nis', $nis);
 		$this->db->delete('siswa_wali');
+
+		$this->db->where('nis', $nis);
+		$this->db->delete('transaksi_kelas');
 		$this->db->trans_complete();
 	}
 
-	public function semuasiswa($kelas)
+	public function semuasiswa($kelas, $thn_akademik)
 	{
-		if ($kelas) {
-			return $this->db->query("SELECT siswa.nis,siswa.nama_lengkap, siswa.tempat_lahir,siswa.tgl_lahir,siswa.gender,siswa.foto_siswa,siswa.telp, kelas.nm_kelas FROM transaksi_kelas INNER JOIN siswa ON transaksi_kelas.nis = siswa.nis INNER JOIN kelas ON transaksi_kelas.id_kelas = kelas.id_kelas WHERE kelas.id_kelas = '$kelas'");
+		if ($kelas && $thn_akademik) {
+			return $this->db->query("SELECT siswa.nis,siswa.nama_lengkap, siswa.tempat_lahir,siswa.tgl_lahir,siswa.gender,siswa.foto_siswa,siswa.alamat, kelas.nm_kelas, th_akademik.th_ajaran FROM transaksi_kelas INNER JOIN siswa ON transaksi_kelas.nis = siswa.nis INNER JOIN kelas ON transaksi_kelas.id_kelas = kelas.id_kelas INNER JOIN th_akademik ON transaksi_kelas.id_th_akademik = th_akademik.id_th_akademik WHERE kelas.id_kelas = '$kelas' AND th_akademik.id_th_akademik= '$thn_akademik' ORDER BY siswa.tgl DESC");
+
+			// $this->db->select('nis, nama_lengkap, tempat_lahir, tgl_lahir, gender, foto_siswa, alamat, wali_nama');
+			// $this->db->from('siswa');
+			// $this->db->join('siswa_wali', 'siswa_wali.nis = siswa.nis', 'left');
+			// return $this->db->get();
 		}else{
-			$this->db->select('foto_siswa,nis, nama_lengkap, tempat_lahir, tgl_lahir, gender, telp');
-			return $this->db->get('siswa');
+			// return $this->db->query("SELECT siswa.nis,siswa.nama_lengkap, siswa.tempat_lahir,siswa.tgl_lahir,siswa.gender,siswa.foto_siswa,siswa.telp, kelas.nm_kelas, th_akademik.th_ajaran FROM transaksi_kelas INNER JOIN siswa ON transaksi_kelas.nis = siswa.nis INNER JOIN kelas ON transaksi_kelas.id_kelas = kelas.id_kelas INNER JOIN th_akademik ON transaksi_kelas.id_th_akademik = th_akademik.id_th_akademik");
+			return $this->db->query("SELECT foto_siswa, nis, nama_lengkap, gender, tempat_lahir, tgl_lahir, alamat FROM siswa ORDER BY tgl DESC");
 		}
 	}
 
