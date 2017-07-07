@@ -21,7 +21,7 @@
       </div>
 
       <div class="col-md-2 col-md-offset-5">
-        <a href="<?php echo base_url() ?>transaksikelas/tambahtransaksi" class="btn btn-success"><i class="fa fa-plus"></i> Tambah Transaksi</a>
+        <a href="<?php echo base_url() ?>transaksikelas/tambahtransaksi" class="btn btn-success"><i class="fa fa-plus"></i> Kenaikan Kelas</a>
       </div>
     </div>
     
@@ -52,7 +52,7 @@ if(count($transaksi)){ ?>
           <td><?php echo $transaksis['nm_kelas'] ?></td>
           <td><?php echo $transaksis['th_ajaran'] ?></td>
           <td align="center">
-            <a href="<?php echo base_url('transaksikelas/hapus/'.$transaksis['id_transaksi_kelas'])?>" onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a>
+            <a href="<?php echo base_url('transaksikelas/hapus/'.$transaksis['id_transaksi_kelas'])?>" onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus</a>
           </td>
         </tr>
         

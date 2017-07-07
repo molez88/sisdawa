@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-lg-5">
+  <div class="col-lg-5" style="clear:both;">
     <form class="form-inline" method="post" action="<?php echo base_url()?>siswa">
       <div class="col-lg-2">
         <select class="form-control" name="kelas" autofocus>
@@ -52,7 +52,7 @@ if(count($siswa)){ ?>
         <tr>
           <td>
             <?php if($result['foto_siswa']){ ?>
-              <img src="<?php echo base_url('assets/img/siswa/'.$result['foto_siswa'])?>" class="img-responsive avatar-view" width="120px">
+              <img src="<?php echo base_url('assets/img/siswa/'.$result['foto_siswa'])?>" class="img-responsive avatar-view" style="height: 155px; width: 140px">
             <?php 
             }else{ ?>
               <img src="<?php echo base_url('assets/img/default.png')?>" class="img-responsive avatar-view" width="120px">
@@ -65,9 +65,9 @@ if(count($siswa)){ ?>
           <td><?php echo $result['tempat_lahir'].', '.tgl_indo($result['tgl_lahir']) ?></td>
           <td><?php echo $result['alamat'];?></td>
           <td align="center">
-            <a href="<?php echo base_url('siswa/detail/'.$result['nis'])?>" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-folder-open"></i> Detail</a>
-            <a href="<?php echo base_url()?>siswa/update/<?php echo $result['nis'] ?>" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a>
-            <a href="<?php echo base_url('siswa/hapus/'.$result['nis'])?>" onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a>
+            <a href="<?php echo base_url('siswa/detail/'.$result['nis'])?>" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Detail</a>
+            <a href="<?php echo base_url()?>siswa/update/<?php echo $result['nis'] ?>" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Edit</a>
+            <a href="<?php echo base_url('siswa/hapus/'.$result['nis'])?>" onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus</a>
           </td>
         </tr>
         
@@ -75,6 +75,8 @@ if(count($siswa)){ ?>
        ?>
     </tbody>
 </table>
+
+<a href="<?php base_url()?>siswa/printtt" type="button">Print</a>
 <?php }else{ ?>
   <div class="panel panel-default">
     <div class="panel-body">

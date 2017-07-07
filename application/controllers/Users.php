@@ -10,6 +10,7 @@ class Users extends CI_Controller {
 
 	public function index()
 	{
+		$data['kembali']= FALSE;
 		if ($this->session->userdata('logged_in') == FALSE || $this->session->userdata('level') != 'admin') {
 			echo "<script language=javascript>alert('Maaf. Anda tidak memiliki akses.');</script>";
 			redirect('users/login','refresh');
@@ -24,10 +25,12 @@ class Users extends CI_Controller {
 
 	public function tambahusers()
 	{
+
 		if ($this->session->userdata('logged_in') == FALSE || $this->session->userdata('level') != 'admin') {
 			echo "<script language=javascript>alert('Maaf. Anda tidak memiliki akses.');</script>";
 			redirect('users/login','refresh');
 		}
+		$data['kembali']= FALSE;
 		$data['judul'] = 'Form Tambah User';
 
 		$this->form_validation->set_rules('username', 'username','required');
@@ -69,6 +72,7 @@ class Users extends CI_Controller {
 	
 	public function profile($username='')
 	{
+		$data['kembali']= FALSE;
 		$data['judul'] = 'Profile User';
 		$data['users'] = $this->Users_model->user_profile($username);
 		$property['konten'] = $this->load->view('users/profile', $data, TRUE);

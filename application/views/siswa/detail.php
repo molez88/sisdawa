@@ -2,12 +2,12 @@
 	<div class="col-lg-3">
 		<div class="panel panel-info">
 			<div class="panel-body" style="text-align: center">
-				<div class="profile_img">
+				<div class="container-fluid">
 					<?php if($siswa_detail['foto_siswa']){ ?>
-              <img src="<?php echo base_url('assets/img/siswa/'.$siswa_detail['foto_siswa'])?>" class="img-responsive avatar-view">
+              <img src="<?php echo base_url('assets/img/siswa/'.$siswa_detail['foto_siswa'])?>" class="img-responsive" style="height: 225px">
             <?php 
             }else{ ?>
-              <img src="<?php echo base_url('assets/img/default.png')?>" class="img-responsive avatar-view">
+              <img src="<?php echo base_url('assets/img/default.png')?>" class="img-responsive" style="height: 260px">
             <?php } ?>
 				
 				</div>
@@ -24,12 +24,8 @@
 				</h2>
 			</div>
 		</div>
-		<div style="float: left;">
-			<a href="<?php echo base_url() ?>siswa" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Kembali</a>
-		</div>
-		<div style="float: right;">
-			<a href="<?php echo base_url()?>siswa/update/<?php echo $siswa_detail['nis'] ?>" type="button" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
-		</div>
+		<a href="<?php echo base_url()?>siswa/update/<?php echo $siswa_detail['nis'] ?>" type="button" class="btn btn-info btn-block"><i class="fa fa-edit"></i> Edit</a>
+		<a href="<?php echo base_url('siswa/print_pdf_detail_siswa/').$siswa_detail['nis']; ?>" type="button" class="btn btn-default btn-block"><i class="fa fa-print"></i> Print</a>
 		
 		
 	</div>
@@ -39,6 +35,7 @@
           <li class="active"><a href="#tab-1" data-toggle="tab">Data Siswa</a></li>
           <li><a href="#tab-2" data-toggle="tab">Orang Tua Siswa</a></li>
           <li><a href="#tab-3" data-toggle="tab">Wali Siswa</a></li>
+          <li><a href="#tab-4" data-toggle="tab">Lainnya</a></li>
       </ul>
       <div id="my-tab-content" class="tab-content">
           <div class="tab-pane active" id="tab-1">
@@ -59,7 +56,17 @@
 		          		<tr>
 		          			<td width="25%">Jenis Kelamin</td>
 		          			<td>:</td>
-		          			<td width="73%"><?php echo $siswa_detail['gender'] ?></td>
+		          			<td width="73%">
+		          				<?php 
+		          				if ($siswa_detail['gender'] == 'L') {
+		          					echo "Laki-laki";
+		          				}else if($siswa_detail['gender'] == 'P'){
+		          					echo "Perempuan";
+		          				}else{
+		          					echo "-";
+		          				} ?>
+		          				
+		          			</td>
 		          		</tr>
 		          		<tr>
 		          			<td width="25%">Tempat dan Tanggal Lahir</td>
@@ -259,8 +266,38 @@
 		        		</tr>
           		</table>
           	</div>
-          	
-            
+          </div>
+          <div class="tab-pane" id="tab-4">
+          	<div class="container">
+          		<table class="table">
+          			<tr>
+		        			<td width="35%">Kartu Perlindungan Sosial (KPS/PKH)</td>
+		        			<td>:</td>
+		        			<td width="65%"><?php echo $siswa_detail['kps'] ?></td>
+		        		</tr>
+		        		<tr>
+		        		<tr>
+		        			<td width="35%">Kartu Keluarga Miskin (KKM)</td>
+		        			<td>:</td>
+		        			<td width="65%"><?php echo $siswa_detail['kkm']; ?></td>
+		        		</tr>
+		        		<tr>
+		        			<td width="35%">Kartu Indonesia Pintar (KIP)</td>
+		        			<td>:</td>
+		        			<td width="65%"><?php echo $siswa_detail['kip'] ?></td>
+		        		</tr>
+		        		<tr>
+		        			<td width="35%">Kartu Menuju Sejahtera (KMS)</td>
+		        			<td>:</td>
+		        			<td width="65%"><?php echo $siswa_detail['kms'] ?></td>
+		        		</tr>
+		        		<tr>
+		        			<td width="35%">Kartu Keluarga Sejahtera (KKS)</td>
+		        			<td>:</td>
+		        			<td width="65%"><?php echo $siswa_detail['kks'] ?></td>
+		        		</tr>
+          		</table>
+          	</div>
           </div>
       </div>
     </div>

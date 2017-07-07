@@ -15,6 +15,7 @@ class Pendidikan extends CI_Controller {
 
 	public function index()
 	{
+		$data['kembali']= FALSE;
 		$data['judul'] = 'Data Pendidikan';
 		$property['konten'] = $this->load->view('master/pendidikan',$data,TRUE);
 		$this->load->view('template',$property);
@@ -31,8 +32,8 @@ class Pendidikan extends CI_Controller {
 			$row[] = $pendidikan->nama_pendidikan;
 
 			//add html for action
-			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void()" title="Edit" onclick="edit_pendidikan('."'".$pendidikan->id_pendidikan."'".')"><i class="glyphicon glyphicon-edit"></i> Edit</a>
-				  <a class="btn btn-sm btn-danger" href="javascript:void()" title="Hapus" onclick="delete_pendidikan('."'".$pendidikan->id_pendidikan."'".')"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
+			$row[] = '<a class="btn btn-sm btn-info" href="javascript:void()" title="Edit" onclick="edit_pendidikan('."'".$pendidikan->id_pendidikan."'".')"><i class="fa fa-edit"></i> Edit</a>
+				  <a class="btn btn-sm btn-danger" href="javascript:void()" title="Hapus" onclick="delete_pendidikan('."'".$pendidikan->id_pendidikan."'".')"><i class="fa fa-trash"></i> Hapus</a>';
 		
 			$data[] = $row;
 		}

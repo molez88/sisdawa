@@ -14,6 +14,7 @@ class Thnakademik extends CI_Controller {
 
 	public function index()
 	{
+		$data['kembali']= FALSE;
 		$data['judul'] = 'Data Tahun Akademik';
 		$property['konten'] = $this->load->view('master/thnakademik',$data,TRUE);
 		$this->load->view('template',$property);
@@ -33,8 +34,8 @@ class Thnakademik extends CI_Controller {
 			$row[] = $thnakademik->keterangan;
 
 			//add html for action
-			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void()" title="Edit" onclick="edit_thnakademik('."'".$thnakademik->id_th_akademik."'".')"><i class="glyphicon glyphicon-edit"></i> Edit</a> ||
-				  &nbsp<a class="btn btn-sm btn-danger" href="javascript:void()" title="Hapus" onclick="delete_thnakademik('."'".$thnakademik->id_th_akademik."'".')"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
+			$row[] = '<a class="btn btn-sm btn-info" href="javascript:void()" title="Edit" onclick="edit_thnakademik('."'".$thnakademik->id_th_akademik."'".')"><i class="fa fa-edit"></i> Edit</a> ||
+				  &nbsp<a class="btn btn-sm btn-danger" href="javascript:void()" title="Hapus" onclick="delete_thnakademik('."'".$thnakademik->id_th_akademik."'".')"><i class="fa fa-trash"></i> Hapus</a>';
 		
 			$data[] = $row;
 		}

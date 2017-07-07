@@ -15,6 +15,7 @@ class Agama extends CI_Controller {
 
 	public function index()
 	{
+		$data['kembali']= FALSE;
 		$data['judul'] = 'Data Agama';
 		$property['konten'] = $this->load->view('master/agama',$data,TRUE);
 		$this->load->view('template',$property);
@@ -31,7 +32,7 @@ class Agama extends CI_Controller {
 			$row[] = $agama->agama;
 
 			//add html for action
-			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void()" title="Edit" onclick="edit_agama('."'".$agama->id_agama."'".')"><i class="glyphicon glyphicon-edit"></i> Edit</a> || &nbsp<a class="btn btn-sm btn-danger" href="javascript:void()" title="Hapus" onclick="delete_agama('."'".$agama->id_agama."'".')"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
+			$row[] = '<a class="btn btn-sm btn-info" href="javascript:void()" title="Edit" onclick="edit_agama('."'".$agama->id_agama."'".')"><i class="fa fa-edit"></i> Edit</a> || &nbsp<a class="btn btn-sm btn-danger" href="javascript:void()" title="Hapus" onclick="delete_agama('."'".$agama->id_agama."'".')"><i class="fa fa-trash"></i> Hapus</a>';
 		
 			$data[] = $row;
 		}
@@ -48,6 +49,7 @@ class Agama extends CI_Controller {
 
 	public function editAgama($id)
 	{
+		
 		$data = $this->Agama_model->get_by_id($id);
 		echo json_encode($data);
 	}

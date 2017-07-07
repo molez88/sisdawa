@@ -15,7 +15,7 @@ class Provinsi extends CI_Controller {
 
 	public function index()
 	{
-
+		$data['kembali']= FALSE;
 		$data['result'] = $this->My_models->selectProvinsi()->result_array();
 		$data['judul']='<small>Data</small> <strong>Provinsi</strong>';
 		$property['konten']=$this->load->view('master/provinsi',$data,true);

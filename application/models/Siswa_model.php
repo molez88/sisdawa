@@ -107,7 +107,7 @@ class Siswa_model extends CI_Model {
 
 	public function getSiswaDetail($nis)
 	{
-		return $this->db->query("SELECT * FROM siswa, agama WHERE siswa.id_agama = agama.id_agama AND siswa.nis = '$nis'")->row_array();
+		return $this->db->query("SELECT * FROM siswa, agama WHERE siswa.id_agama = agama.id_agama AND siswa.nis = '$nis' LIMIT 1")->row_array();
 	}
 
 	public function getAyahDetail($nis)
@@ -118,7 +118,7 @@ class Siswa_model extends CI_Model {
 														siswa_ortu.ayah_id_agama = agama.id_agama AND
 														siswa_ortu.ayah_id_pendidikan = pendidikan.id_pendidikan AND
 														siswa_ortu.ayah_id_pekerjaan = pekerjaan.id_pekerjaan AND
-														siswa_ortu.ayah_id_penghasilan = penghasilan.id_penghasilan")->row_array();
+														siswa_ortu.ayah_id_penghasilan = penghasilan.id_penghasilan LIMIT 1")->row_array();
 	}
 	public function getIbuDetail($nis)
 	{
@@ -128,7 +128,7 @@ class Siswa_model extends CI_Model {
 														siswa_ortu.ibu_id_agama = agama.id_agama AND
 														siswa_ortu.ibu_id_pendidikan = pendidikan.id_pendidikan AND
 														siswa_ortu.ibu_id_pekerjaan = pekerjaan.id_pekerjaan AND
-														siswa_ortu.ibu_id_penghasilan = penghasilan.id_penghasilan")->row_array();
+														siswa_ortu.ibu_id_penghasilan = penghasilan.id_penghasilan LIMIT 1")->row_array();
 	}
 	public function getWaliDetail($nis)
 	{
@@ -138,7 +138,7 @@ class Siswa_model extends CI_Model {
 														siswa_wali.wali_id_agama = agama.id_agama AND
 														siswa_wali.wali_id_pendidikan = pendidikan.id_pendidikan AND
 														siswa_wali.wali_id_pekerjaan = pekerjaan.id_pekerjaan AND
-														siswa_wali.wali_id_penghasilan = penghasilan.id_penghasilan")->row_array();
+														siswa_wali.wali_id_penghasilan = penghasilan.id_penghasilan LIMIT 1")->row_array();
 	}
 
 

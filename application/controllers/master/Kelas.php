@@ -14,6 +14,7 @@ class Kelas extends CI_Controller {
 
 	public function index()
 	{
+		$data['kembali']= FALSE;
 		$data['judul'] = 'Data Kelas';
 		$property['konten'] = $this->load->view('master/kelas',$data,TRUE);
 		$this->load->view('template',$property);
@@ -32,8 +33,8 @@ class Kelas extends CI_Controller {
 			$row[] = $kelas->nm_kelas;
 
 			//add html for action
-			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void()" title="Edit" onclick="edit_kelas('."'".$kelas->id_kelas."'".')"><i class="glyphicon glyphicon-edit"></i> Edit</a> ||
-				  &nbsp<a class="btn btn-sm btn-danger" href="javascript:void()" title="Hapus" onclick="delete_kelas('."'".$kelas->id_kelas."'".')"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
+			$row[] = '<a class="btn btn-sm btn-info" href="javascript:void()" title="Edit" onclick="edit_kelas('."'".$kelas->id_kelas."'".')"><i class="fa fa-edit"></i> Edit</a> ||
+				  &nbsp<a class="btn btn-sm btn-danger" href="javascript:void()" title="Hapus" onclick="delete_kelas('."'".$kelas->id_kelas."'".')"><i class="fa fa-trash"></i> Hapus</a>';
 		
 			$data[] = $row;
 		}

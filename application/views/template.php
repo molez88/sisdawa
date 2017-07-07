@@ -73,7 +73,7 @@
 									<li><a><i class="fa fa-group"></i> Form Data Siswa <span class="fa fa-chevron-down"></span></a>
 										<ul class="nav child_menu">
 											<li><a href="<?php echo base_url();?>siswa">Data Siswa</a></li>
-											<li><a href="<?php echo base_url();?>transaksikelas">Transaksi Kelas</a></li>
+											<li><a href="<?php echo base_url();?>transaksikelas">Kenaikan Kelas</a></li>
 										</ul>
 									</li>
 									
@@ -122,6 +122,14 @@
           <div class="x_panel">
             <div class="x_title">
               <h2><?php echo $judul; ?></h2>
+              <?php if ($kembali == TRUE): ?>
+              	<ul class="nav navbar-right panel_toolbox">
+	                <li>
+	                	<button onClick="history.back();" class="btn btn-default"><i class="glyphicon glyphicon-backward"></i> Kembali</button>
+	                </li>
+	              </ul>
+              <?php endif ?>
+              
               <div class="clearfix"></div>
             </div>
             <div class="x_content">

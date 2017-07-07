@@ -109,9 +109,8 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
         <div class="form-group">
           <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">13.&nbsp;&nbsp;Tahun Masuk</label>
           <div class="col-md-3 col-xs-12">
-            <input type="text" class="form-control" name="thn_masuk" id="thn_masuk" maxlength="4" required>
+            <input class="form-control" type="text" id="thn_masuk" name="thn_masuk" readonly>
           </div>
-          <em id="pesan1" style="color: red"></em>
         </div>
       </div>
       <div class="col-md-3 col-sm-3">
@@ -134,7 +133,14 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">15.&nbsp;&nbsp;Tempat dan Tanggal Lahir</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">15.&nbsp;&nbsp;NIK</label>
+          <div class="col-md-3 col-xs-12">
+            <input type="text" class="form-control" id="nik_ayah" name="nik_ayah" required>
+          </div>
+            <em id="pesan_nik_ayah" style="color: red"></em>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">16.&nbsp;&nbsp;Tempat dan Tanggal Lahir</label>
           <div class="col-md-2 col-xs-12">
             <input type="text" class="form-control" name="ayah_tmp_lahir" placeholder="Kota/Kabupaten">
           </div>
@@ -144,7 +150,7 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">16.&nbsp;&nbsp;Agama</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">17.&nbsp;&nbsp;Agama</label>
           <div class="col-md-5">
             <select class="form-control" name="ayah_id_agama" required>
             <option value="">[--Pilih Agama--]</option>
@@ -155,7 +161,7 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">17.&nbsp;&nbsp;Pendidikan</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">18.&nbsp;&nbsp;Pendidikan</label>
           <div class="col-md-5">
             <select class="form-control" name="ayah_id_pendidikan" required>
             <option value="">[--Pilih Pendidikan--]</option>
@@ -166,7 +172,7 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">18.&nbsp;&nbsp;Pekerjaan</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">19.&nbsp;&nbsp;Pekerjaan</label>
           <div class="col-md-5">
             <select class="form-control" name="ayah_id_pekerjaan" required>
             <option value="">[--Pilih Pekerjaan--]</option>
@@ -177,7 +183,7 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">19.&nbsp;&nbsp;Penghasilan</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">20.&nbsp;&nbsp;Penghasilan</label>
           <div class="col-md-5">
             <select class="form-control" name="ayah_id_penghasilan" required>
             <option value="">[--Pilih Penghasilan--]</option>
@@ -188,13 +194,13 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">20.&nbsp;&nbsp;Alamat</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">21.&nbsp;&nbsp;Alamat</label>
           <div class="col-md-5 col-xs-12">
             <textarea type="text" class="form-control" name="ayah_alamat"></textarea>
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">21.&nbsp;&nbsp;No. Telp/HP</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">22.&nbsp;&nbsp;No. Telp/HP</label>
           <div class="col-md-5 col-xs-12">
             <input type="text" class="form-control numeric" name="ayah_telp" maxlength="15">
           </div>
@@ -209,13 +215,20 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
     </div>
       <div class="panel-body">
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">22.&nbsp;&nbsp;Nama</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">23.&nbsp;&nbsp;Nama</label>
           <div class="col-md-5 col-xs-12">
             <input type="text" class="form-control" name="ibu_nama" required>
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">23.&nbsp;&nbsp;Tempat dan Tanggal Lahir</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">24.&nbsp;&nbsp;NIK</label>
+          <div class="col-md-3 col-xs-12">
+            <input type="text" class="form-control" id="nik_ibu" name="nik_ibu" required>
+          </div>
+            <em id="pesan_nik_ibu" style="color: red"></em>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">25.&nbsp;&nbsp;Tempat dan Tanggal Lahir</label>
           <div class="col-md-2 col-xs-12">
             <input type="text" class="form-control" name="ibu_tmp_lahir" placeholder="Kota/Kabupaten">
           </div>
@@ -225,7 +238,7 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">24.&nbsp;&nbsp;Agama</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">26.&nbsp;&nbsp;Agama</label>
           <div class="col-md-5">
             <select class="form-control" name="ibu_id_agama" required>
             <option value="">[--Pilih Agama--]</option>
@@ -236,7 +249,7 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">25.&nbsp;&nbsp;Pendidikan</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">27.&nbsp;&nbsp;Pendidikan</label>
           <div class="col-md-5">
             <select class="form-control" name="ibu_id_pendidikan" required>
             <option value="">[--Pilih Pendidikan--]</option>
@@ -247,7 +260,7 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">26.&nbsp;&nbsp;Pekerjaan</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">28.&nbsp;&nbsp;Pekerjaan</label>
           <div class="col-md-5">
             <select class="form-control" name="ibu_id_pekerjaan" required>
             <option value="">[--Pilih Pekerjaan--]</option>
@@ -258,7 +271,7 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">27.&nbsp;&nbsp;Penghasilan</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">29.&nbsp;&nbsp;Penghasilan</label>
           <div class="col-md-5">
             <select class="form-control" name="ibu_id_penghasilan" required>
             <option value="">[--Pilih Penghasilan--]</option>
@@ -269,13 +282,13 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">28.&nbsp;&nbsp;Alamat</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">30.&nbsp;&nbsp;Alamat</label>
           <div class="col-md-5 col-xs-12">
             <textarea type="text" class="form-control" name="ibu_alamat"></textarea>
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">29.&nbsp;&nbsp;No. Telp/HP</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">31.&nbsp;&nbsp;No. Telp/HP</label>
           <div class="col-md-5 col-xs-12">
             <input type="text" class="form-control numeric" name="ibu_telp" maxlength="15" >
           </div>
@@ -291,13 +304,20 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
     
       <div class="panel-body">
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">30.&nbsp;&nbsp;Nama</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">32.&nbsp;&nbsp;Nama</label>
           <div class="col-md-5 col-xs-12">
             <input type="text" class="form-control" name="wali_nama" required>
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">31.&nbsp;&nbsp;Tempat dan Tanggal Lahir</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">33.&nbsp;&nbsp;NIK</label>
+          <div class="col-md-3 col-xs-12">
+            <input type="text" class="form-control" id="nik_wali" name="nik_wali" required>
+          </div>
+            <em id="pesan_nik_wali" style="color: red"></em>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">34.&nbsp;&nbsp;Tempat dan Tanggal Lahir</label>
           <div class="col-md-2 col-xs-12">
             <input type="text" class="form-control" name="wali_tmp_lahir" placeholder="Kota/Kabupaten">
           </div>
@@ -307,7 +327,7 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">32.&nbsp;&nbsp;Agama</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">35.&nbsp;&nbsp;Agama</label>
           <div class="col-md-5">
             <select class="form-control" name="wali_id_agama" required>
             <option value="">[--Pilih Agama--]</option>
@@ -318,7 +338,7 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">33.&nbsp;&nbsp;Pendidikan</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">36.&nbsp;&nbsp;Pendidikan</label>
           <div class="col-md-5">
             <select class="form-control" name="wali_id_pendidikan" required>
             <option value="">[--Pilih Pendidikan--]</option>
@@ -329,7 +349,7 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">34.&nbsp;&nbsp;Pekerjaan</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">37.&nbsp;&nbsp;Pekerjaan</label>
           <div class="col-md-5">
             <select class="form-control" name="wali_id_pekerjaan" required>
             <option value="">[--Pilih Pekerjaan--]</option>
@@ -340,7 +360,7 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">35.&nbsp;&nbsp;Penghasilan</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">38.&nbsp;&nbsp;Penghasilan</label>
           <div class="col-md-5">
             <select class="form-control" name="wali_id_penghasilan" required>
             <option value="">[--Pilih Penghasilan--]</option>
@@ -351,15 +371,80 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">36.&nbsp;&nbsp;Alamat</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">39.&nbsp;&nbsp;Alamat</label>
           <div class="col-md-5 col-xs-12">
             <textarea type="text" class="form-control" name="wali_alamat"></textarea>
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">37.&nbsp;&nbsp;No. Telp/HP</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">40.&nbsp;&nbsp;No. Telp/HP</label>
           <div class="col-md-5 col-xs-12">
             <input type="text" class="form-control numeric" name="wali_telp" maxlength="15">
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        E. KETERANGAN LAINNYA
+      </h4>
+    </div>
+    
+      <div class="panel-body">
+        <div class="form-group">
+          <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">41.&nbsp;&nbsp;Kartu Perlindungan Sosial (KPS/PKH)</label>
+          <div class="col-md-5 col-xs-12">
+            <label class="radio-inline">
+              <input type="radio" name="kps" value="Ya" required>Ya
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="kps" value="Tidak">Tidak
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">42.&nbsp;&nbsp;Kartu Keluarga Miskin (KKM)</label>
+          <div class="col-md-5 col-xs-12">
+            <label class="radio-inline">
+              <input type="radio" name="kkm" value="Ya" required>Ya
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="kkm" value="Tidak">Tidak
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">43.&nbsp;&nbsp;Kartu Indonesia Pintar (KIP)</label>
+          <div class="col-md-5 col-xs-12">
+            <label class="radio-inline">
+              <input type="radio" name="kip" value="Ya" required>Ya
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="kip" value="Tidak">Tidak
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">44.&nbsp;&nbsp;Kartu Menuju Sejahtera (KMS)</label>
+          <div class="col-md-5 col-xs-12">
+            <label class="radio-inline">
+              <input type="radio" name="kms" value="Ya" required>Ya
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="kms" value="Tidak">Tidak
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">45.&nbsp;&nbsp;Kartu Keluarga Sejahtera (KKS)</label>
+          <div class="col-md-5 col-xs-12">
+            <label class="radio-inline">
+              <input type="radio" name="kks" value="Ya" required>Ya
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="kks" value="Tidak">Tidak
+            </label>
           </div>
         </div>
       </div>
@@ -396,13 +481,7 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
       }
      });
 
-    $("#thn_masuk").keypress(function (e) {
-       //if the letter is not digit then display error and don't type anything
-       if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-          //display error message
-          $("#pesan1").html("Masukkan angka").show().fadeOut("slow");
-            return false;
-      }
-     });
-  });
+    $('#thn_masuk').datepicker({
+     minViewMode: 2, format: 'yyyy', autoclose: true});
+});
 </script>

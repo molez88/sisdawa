@@ -16,6 +16,7 @@ class Siswa extends CI_Controller {
 	public function index()
 	{
 		$data['judul'] = 'Data Siswa';
+		$data['kembali']= FALSE;
 		$data['kelas'] = $this->Siswa_model->getKelas();
 		$data['thn_akademik'] = $this->Siswa_model->getThAkademik();
 		
@@ -32,6 +33,7 @@ class Siswa extends CI_Controller {
 
 	
 	public function input(){		
+		$data['kembali']= FALSE;
 		$data['judul'] = 'Form Input Data Siswa';
 
 		$data['agama'] = $this->Siswa_model->getAgama()->result_array();
@@ -83,6 +85,11 @@ class Siswa extends CI_Controller {
 					'email' => $this->input->post('email'),
 					'riwayat_kesehatan' => $this->input->post('riwayat_kesehatan'),
 					'thn_masuk' => $this->input->post('thn_masuk'),
+					'kps' => $this->input->post('kps'),
+					'kkm' => $this->input->post('kkm'),
+					'kip' => $this->input->post('kip'),
+					'kms' => $this->input->post('kms'),
+					'kks' => $this->input->post('kks'),
 					'foto_siswa' => $foto
 				);
 
@@ -107,7 +114,6 @@ class Siswa extends CI_Controller {
 						'ibu_alamat' => $this->input->post('ibu_alamat'),
 						'ibu_telp' => $this->input->post('ibu_telp')
 				);
-
 				$data_wali = array(
 						'nis' => $this->input->post('nis'),
 						'wali_nama' => $this->input->post('wali_nama'),
@@ -121,8 +127,6 @@ class Siswa extends CI_Controller {
 						'wali_notelp' => $this->input->post('wali_telp')
 				);
 			}else{
-
-				
 				$data_siswa = array(
 					'nis' => $this->input->post('nis'),
 					'nama_lengkap' => $this->input->post('nama'),
@@ -137,9 +141,13 @@ class Siswa extends CI_Controller {
 					'telp' => $this->input->post('telp'),
 					'email' => $this->input->post('email'),
 					'riwayat_kesehatan' => $this->input->post('riwayat_kesehatan'),
-					'thn_masuk' => $this->input->post('thn_masuk')
+					'thn_masuk' => $this->input->post('thn_masuk'),
+					'kps' => $this->input->post('kps'),
+					'kkm' => $this->input->post('kkm'),
+					'kip' => $this->input->post('kip'),
+					'kms' => $this->input->post('kms'),
+					'kks' => $this->input->post('kks'),
 				);
-
 				$data_ortu = array(
 						'nis' => $this->input->post('nis'),
 						'ayah_nama' => $this->input->post('ayah_nama'),
@@ -161,7 +169,6 @@ class Siswa extends CI_Controller {
 						'ibu_alamat' => $this->input->post('ibu_alamat'),
 						'ibu_telp' => $this->input->post('ibu_telp')
 				);
-
 				$data_wali = array(
 						'nis' => $this->input->post('nis'),
 						'wali_nama' => $this->input->post('wali_nama'),
@@ -183,6 +190,7 @@ class Siswa extends CI_Controller {
 	}
 
 	public function update($nis=0){
+		$data['kembali']= FALSE;
 		$data['judul'] = 'Form Edit Data Siswa';
 
 		$data['agama'] = $this->Siswa_model->getAgama()->result_array();
@@ -231,6 +239,12 @@ class Siswa extends CI_Controller {
 						'telp' => $this->input->post('telp'),
 						'email' => $this->input->post('email'),
 						'riwayat_kesehatan' => $this->input->post('riwayat_kesehatan'),
+						'kps' => $this->input->post('kps'),
+						'kkm' => $this->input->post('kkm'),
+						'kip' => $this->input->post('kip'),
+						'kms' => $this->input->post('kms'),
+						'kks' => $this->input->post('kks'),
+						'thn_masuk' => $this->input->post('thn_masuk'),
 						'foto_siswa' => $foto
 				);
 
@@ -279,7 +293,13 @@ class Siswa extends CI_Controller {
 						'jml_saudara' => $this->input->post('jml_saudara'),
 						'telp' => $this->input->post('telp'),
 						'email' => $this->input->post('email'),
-						'riwayat_kesehatan' => $this->input->post('riwayat_kesehatan')
+						'riwayat_kesehatan' => $this->input->post('riwayat_kesehatan'),
+						'thn_masuk' => $this->input->post('thn_masuk'),
+						'kps' => $this->input->post('kps'),
+						'kkm' => $this->input->post('kkm'),
+						'kip' => $this->input->post('kip'),
+						'kms' => $this->input->post('kms'),
+						'kks' => $this->input->post('kks'),
 				);
 
 				$data_ortu = array(
@@ -331,7 +351,8 @@ class Siswa extends CI_Controller {
 
 	public function detail($nis)
 	{
-		$data['judul'] = 'Siswa';
+		$data['judul'] = 'Detail Siswa';
+		$data['kembali']= TRUE;
 		$data['siswa_detail'] = $this->Siswa_model->getSiswaDetail($nis);
 		$data['ayah_detail'] = $this->Siswa_model->getAyahDetail($nis);
 		$data['ibu_detail'] = $this->Siswa_model->getIbuDetail($nis);
@@ -340,11 +361,27 @@ class Siswa extends CI_Controller {
 		$this->load->view('template', $property);
 	}
 
-	public function printtt()
+	public function print_pdf_detail_siswa($nis)
 	{
-		$for_tgl = date('d-F-Y');
-    $pdfFilePath = "Laporan_$for_tgl.pdf";
-		$this->load->view('test');
+		//$for_tgl = date('d-F-Y');
+  	$pdfFilePath = "Laporan_siswa_$nis.pdf";
+
+    // $nissiswa = $this->db->query("SELECT nis, nama_lengkap FROM siswa WHERE nis = '$nis'")->row_array();
+    // $nis = $nissiswa[0]['nis'];
+    // $nama = $nissiswa[1]['nama_lengkap'];
+    // $pdfFilePath = "$nis_$nama.pdf";
+  //   $nissiswas = mysql_query("SELECT nis,nama FROM siswa WHERE nis= '$nis'");
+		// $num = mysql_fetch_row($nissiswa);
+		// $nis = $num[0];
+		// $nama = $num[1];
+		// $pdfFilePath = $nis."_".$nama.".pdf";
+
+    // print data siswa
+    $data['siswa_detail'] = $this->Siswa_model->getSiswaDetail($nis);
+		$data['ayah_detail'] = $this->Siswa_model->getAyahDetail($nis);
+		$data['ibu_detail'] = $this->Siswa_model->getIbuDetail($nis);
+		$data['wali_detail'] = $this->Siswa_model->getWaliDetail($nis);
+		$this->load->view('siswa/print_pdf_detail_siswa',$data);
 		// Get output html
 		$html = $this->output->get_output();
 		
@@ -373,6 +410,14 @@ class Siswa extends CI_Controller {
 		
 		$property['konten'] = $this->load->view('siswa/laporan_view',$data);
 	}
+
+	// public function printsiswa($nis){
+	// 	$data['siswa_detail'] = $this->Siswa_model->getSiswaDetail($nis);
+	// 	$data['ayah_detail'] = $this->Siswa_model->getAyahDetail($nis);
+	// 	$data['ibu_detail'] = $this->Siswa_model->getIbuDetail($nis);
+	// 	$data['wali_detail'] = $this->Siswa_model->getWaliDetail($nis);
+	// 	$this->load->view('siswa/print_siswa',$data);
+	// }
 
 	public function export_excel($kelas)
 	{

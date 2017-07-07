@@ -11,10 +11,12 @@ class Transaksikelas extends CI_Controller {
 		}
 		$this->load->model('Transaksi_model');
 		$this->load->helper('tanggal');
+
 	}
 
 	public function index()
 	{
+		$data['kembali']= FALSE;
 		$data['judul'] = 'Transaksi Kelas Siswa';
 
 		$data['kelas'] = $this->Transaksi_model->getKelas();
@@ -31,6 +33,7 @@ class Transaksikelas extends CI_Controller {
 
 	public function tambahtransaksi()
 	{
+		$data['kembali']= FALSE;
 		$data['judul'] = 'Form Transaksi Kelas';
 		$data['kelas'] = $this->Transaksi_model->getKelas()->result_array();
 		$data['siswa'] = $this->Transaksi_model->getSiswa()->result_array();
@@ -44,7 +47,7 @@ class Transaksikelas extends CI_Controller {
 			$this->load->view('template',$property);
 		} else {
 			$this->Transaksi_model->transaksi_input();
-			$this->session->set_flashdata('insert_transaksi', 'Transaksi kelas berhasil ditambahkan');
+			$this->session->set_flashdata('insert_transaksi', 'Kenaikan kelas berhasil ditambahkan');
 			redirect('transaksikelas','refresh');
 		}
 	}
@@ -52,7 +55,7 @@ class Transaksikelas extends CI_Controller {
 	public function hapus($id)
 	{
 		$this->Transaksi_model->hapus($id);
-		$this->session->set_flashdata('delete_transaksi', 'Transaksi kelas berhasil dihapus');
+		$this->session->set_flashdata('delete_transaksi', 'Kenaikan kelas berhasil dihapus');
 		redirect('Transaksikelas','refresh');
 	}
 

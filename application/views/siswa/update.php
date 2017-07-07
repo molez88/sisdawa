@@ -104,17 +104,17 @@
         </div>
         <div class="form-group">
           <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">13.&nbsp;&nbsp;Tahun Masuk</label>
-          <div class="col-md-7 col-xs-12">
-            <input type="text" class="form-control" name="thn_masuk" value="<?php echo $siswa_nis['thn_masuk'] ?>">
+          <div class="col-md-3 col-xs-12">
+            <input type="text" class="form-control" id="thn_masuk" name="thn_masuk" value="<?php echo $siswa_nis['thn_masuk'] ?>" readonly>
           </div>
         </div>
       </div>
       <div class="col-md-3 col-sm-3">
         <input type="hidden" name="path" value="<?php echo $siswa_nis['foto_siswa'] ?>">
         <?php if ($siswa_nis['foto_siswa']): ?>
-          <img src="<?php echo base_url('assets/img/siswa/'.$siswa_nis['foto_siswa']);?>" class="img-responsive">
+          <img src="<?php echo base_url('assets/img/siswa/'.$siswa_nis['foto_siswa']);?>" class="img-responsive" style="height: 270px">
         <?php else: ?>
-          <img src="<?php echo base_url('assets/img/default.png');?>" class="img-responsive">
+          <img src="<?php echo base_url('assets/img/default.png');?>" class="img-responsive" style="height: 270px>
         <?php endif ?>
         
         <input type="file" class="form-control" name="userfile" size="20">
@@ -365,6 +365,71 @@
         </div>
       </div>
   </div>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        E. KETERANGAN LAINNYA
+      </h4>
+    </div>
+    
+      <div class="panel-body">
+        <div class="form-group">
+          <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">41.&nbsp;&nbsp;Kartu Perlindungan Sosial (KPS/PKH)</label>
+          <div class="col-md-5 col-xs-12">
+            <label class="radio-inline">
+              <input type="radio" name="kps" value="Ya" <?php if($siswa_nis['kps']=='Ya'){echo 'checked="checked"';}?> required>Ya
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="kps" value="Tidak" <?php if($siswa_nis['kps']=='Tidak'){echo 'checked="checked"';}?>>Tidak
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">42.&nbsp;&nbsp;Kartu Keluarga Miskin (KKM)</label>
+          <div class="col-md-5 col-xs-12">
+            <label class="radio-inline">
+              <input type="radio" name="kkm" value="Ya" <?php if($siswa_nis['kkm']=='Ya'){echo 'checked="checked"';}?> required>Ya
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="kkm" value="Tidak" <?php if($siswa_nis['kkm']=='Tidak'){echo 'checked="checked"';}?>>Tidak
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">43.&nbsp;&nbsp;Kartu Indonesia Pintar (KIP)</label>
+          <div class="col-md-5 col-xs-12">
+            <label class="radio-inline">
+              <input type="radio" name="kip" value="Ya" <?php if($siswa_nis['kip']=='Ya'){echo 'checked="checked"';}?> required>Ya
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="kip" value="Tidak" <?php if($siswa_nis['kip']=='Tidak'){echo 'checked="checked"';}?>>Tidak
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">44.&nbsp;&nbsp;Kartu Menuju Sejahtera (KMS)</label>
+          <div class="col-md-5 col-xs-12">
+            <label class="radio-inline">
+              <input type="radio" name="kms" value="Ya" <?php if($siswa_nis['kms']=='Ya'){echo 'checked="checked"';}?> required>Ya
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="kms" value="Tidak" <?php if($siswa_nis['kms']=='Tidak'){echo 'checked="checked"';}?>>Tidak
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left">45.&nbsp;&nbsp;Kartu Keluarga Sejahtera (KKS)</label>
+          <div class="col-md-5 col-xs-12">
+            <label class="radio-inline">
+              <input type="radio" name="kks" value="Ya" <?php if($siswa_nis['kks']=='Ya'){echo 'checked="checked"';}?> required>Ya
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="kks" value="Tidak" <?php if($siswa_nis['kks']=='Tidak'){echo 'checked="checked"';}?>>Tidak
+            </label>
+          </div>
+        </div>
+      </div>
+  </div>
   
 
   <div class="ln_solid"></div>
@@ -397,5 +462,8 @@
             return false;
       }
      });
+
+    $('#thn_masuk').datepicker({
+     minViewMode: 2, format: 'yyyy', autoclose: true});
   });
 </script>
