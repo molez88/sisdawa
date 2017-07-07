@@ -24,17 +24,14 @@ class Kelas extends CI_Controller {
 	{
 		$list = $this->Kelas_model->get_datatables();
 		$data = array();
-		$no = $_POST['start'];
-		$numb = 1;
+		$no = $_POST['start']+1;
 		foreach ($list as $kelas) {
-			$no++;
 			$row = array();
-			$row[]= $numb++ . '.';
+			$row[]= $no++ . '.';
 			$row[] = $kelas->nm_kelas;
 
 			//add html for action
-			$row[] = '<a class="btn btn-sm btn-info" href="javascript:void()" title="Edit" onclick="edit_kelas('."'".$kelas->id_kelas."'".')"><i class="fa fa-edit"></i> Edit</a> ||
-				  &nbsp<a class="btn btn-sm btn-danger" href="javascript:void()" title="Hapus" onclick="delete_kelas('."'".$kelas->id_kelas."'".')"><i class="fa fa-trash"></i> Hapus</a>';
+			$row[] = '<a class="btn btn-sm btn-info" href="javascript:void()" title="Edit" onclick="edit_kelas('."'".$kelas->id_kelas."'".')"><i class="fa fa-edit"></i> Edit</a> || &nbsp<a class="btn btn-sm btn-danger" href="javascript:void()" title="Hapus" onclick="delete_kelas('."'".$kelas->id_kelas."'".')"><i class="fa fa-trash"></i> Hapus</a>';
 		
 			$data[] = $row;
 		}

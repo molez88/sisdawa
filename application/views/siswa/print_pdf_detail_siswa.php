@@ -16,8 +16,10 @@
   			<td>:</td>
   			<td width="73%"><?php echo $ayah_detail['ayah_nama'] ?></td>
   		</tr>
+  		
   	</tbody>
 	</table>
-
+	<hr>
+  			<img src="assets/img/siswa/<?php echo $siswa_detail['foto_siswa'] ?>" width="100%">
 </body>
 </html>

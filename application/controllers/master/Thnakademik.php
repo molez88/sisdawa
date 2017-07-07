@@ -24,12 +24,10 @@ class Thnakademik extends CI_Controller {
 	{
 		$list = $this->Thnakademik_model->get_datatables();
 		$data = array();
-		$no = $_POST['start'];
-		$numb = 1;
-		foreach ($list as $thnakademik) {
-			$no++;
+		$no = $_POST['start']+1;
+		foreach ($list as $thnakademik) {;
 			$row = array();
-			$row[]= $numb++ . '.';
+			$row[]= $no++ . '.';
 			$row[] = $thnakademik->th_ajaran;
 			$row[] = $thnakademik->keterangan;
 

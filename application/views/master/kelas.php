@@ -53,8 +53,10 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!-- End Bootstrap modal -->
-<script src="<?php echo base_url()?>assets/vendors/jquery/dist/jquery.min.js"></script>
+<script src="<?php echo base_url()?>assets/jquery-2.1.4.min.js"></script>
 <script type="text/javascript">
+  var save_method; //for save method string
+  var table;
   $(document).ready(function() {
 
     //datatables
@@ -76,8 +78,8 @@
             "targets": [ -1 ], //last column
             "orderable": false, //set not orderable
         },
-        ],
 
+        ],
     });
 
     $("input").change(function(){

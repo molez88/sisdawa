@@ -6,7 +6,7 @@
 </head>
 <body>
 <div class="col-md-10 col-md-offset-1">
-  <img src="<?php echo base_url() ?>assets/img/brand1.png" class="img-responsive" width="1110px;"><br>
+  <img src="<?php echo base_url() ?>assets/img/brand1.png" class="img-responsive" width="100%;"><br>
 <div id="print">
   <form class="form-inline" method="post" action="<?php echo base_url()?>siswa/laporansiswa">
     <table>
