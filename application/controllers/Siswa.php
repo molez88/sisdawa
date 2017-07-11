@@ -363,36 +363,27 @@ class Siswa extends CI_Controller {
 
 	public function print_pdf_detail_siswa($nis)
 	{
-		//$for_tgl = date('d-F-Y');
-  	$pdfFilePath = "Laporan_siswa_$nis.pdf";
+    $for_tgl = date('d-F-Y');
 
-    // $nissiswa = $this->db->query("SELECT nis, nama_lengkap FROM siswa WHERE nis = '$nis'")->row_array();
-    // $nis = $nissiswa[0]['nis'];
-    // $nama = $nissiswa[1]['nama_lengkap'];
-    // $pdfFilePath = "$nis_$nama.pdf";
-  //   $nissiswas = mysql_query("SELECT nis,nama FROM siswa WHERE nis= '$nis'");
-		// $num = mysql_fetch_row($nissiswa);
-		// $nis = $num[0];
-		// $nama = $num[1];
-		// $pdfFilePath = $nis."_".$nama.".pdf";
-
-    // print data siswa
-    $data['siswa_detail'] = $this->Siswa_model->getSiswaDetail($nis);
+   	$data['siswa_detail'] = $this->Siswa_model->getSiswaDetail($nis);
 		$data['ayah_detail'] = $this->Siswa_model->getAyahDetail($nis);
 		$data['ibu_detail'] = $this->Siswa_model->getIbuDetail($nis);
 		$data['wali_detail'] = $this->Siswa_model->getWaliDetail($nis);
-		$this->load->view('siswa/print_pdf_detail_siswa',$data);
-		// Get output html
-		$html = $this->output->get_output();
-		
-		// Load library
-		$this->load->library('dompdf_gen');
-		
-		// Convert to PDF
-		$this->dompdf->load_html($html);
-		$this->dompdf->render();
-		$this->dompdf->get_canvas();
-		$this->dompdf->stream($pdfFilePath,array("Attachment"=>0));
+
+   	$pdfFilePath = "Laporan_Anggota_$for_tgl.pdf"; //tentukan nama file dan lokasi report yang akan kita buat 
+      
+	  $tgl_cetak = date('d F Y H:i:s');
+	  ini_set('memory_limit','32M'); 
+
+	  $html = $this->load->view('siswa/print_pdf_detail_siswa',$data,true); // menyimpan hasil HTML ke variabel $html
+
+	   
+	  $this->load->library('pdf');
+	  $pdf = $this->pdf->load();
+	  // |{PAGENO}| = Page Numbering. Halaman
+	  $pdf->SetFooter("Sistem Data Siswa".'|{PAGENO}|'.$tgl_cetak); 
+	  $pdf->WriteHTML($html); // generate file pdf dari $html
+	  $pdf->Output($pdfFilePath, 'I'); // save ke direktori $pdfFilePath
 	}
 	public function laporansiswa()
 	{

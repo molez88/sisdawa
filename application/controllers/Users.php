@@ -100,6 +100,7 @@ class Users extends CI_Controller {
 					);
 					$this->session->set_userdata($user_data);
 				}
+				$this->session->set_flashdata('welcome', 'Selamat datang '.$this->session->userdata('nama'));
 				redirect('home','refresh');
 			}else{
 				$this->session->set_flashdata('gagal_login', 'Kombinasi Username dan Password salah');

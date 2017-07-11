@@ -8,7 +8,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" type="image/png" href="<?php echo base_url() ?>assets/img/smp.png">
 		<title>Sistem Data Siswa | SMP Muhammadiyah 2 Gamping</title>
-
 		<!-- Bootstrap -->
 		<link href="<?php echo base_url()?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 		<!-- bootstrap-datepicker -->
@@ -25,6 +24,13 @@
 
 		<!-- Custom Theme Style -->
 		<link href="<?php echo base_url()?>assets/build/css/custom.min.css" rel="stylesheet">
+
+		<!-- nivo slider -->
+		<link rel="stylesheet" href="<?php echo base_url();?>assets/nivoslider/themes/default/default.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/nivoslider/themes/light/light.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/nivoslider/themes/dark/dark.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/nivoslider/themes/bar/bar.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/nivoslider/nivo-slider.css" type="text/css" media="screen" />
 	</head>
 
 	<body class="nav-md">
@@ -179,6 +185,8 @@
 
 		<!-- jQuery -->
 		<script src="<?php echo base_url()?>assets/jquery-2.1.4.min.js"></script>
+		
+
 		<!-- data tables -->
     <script src="<?php echo base_url()?>assets/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url()?>assets/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -194,18 +202,20 @@
     <script src="<?php echo base_url()?>assets/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
 		<!-- Bootstrap -->
 		<script src="<?php echo base_url()?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-		
-		<!-- bootstrap-daterangepicker -->
 		<script src="<?php echo base_url()?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-		<!-- data tables -->
-		<link href="<?php echo base_url()?>assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url()?>assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url()?>assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url()?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url()?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
-
 		<!-- Custom Theme Scripts -->
 		<script src="<?php echo base_url()?>assets/build/js/custom.js"></script>
-	
+
+		<!-- nivoslider -->
+		
+		<script type="text/javascript" src="<?php echo base_url()?>assets/nivoslider/jquery.nivo.slider.js"></script>
+
+		<script type="text/javascript"> 
+		$(window).on('load', function() {
+		    $('#slider').nivoSlider(); 
+		}); 
+		</script>
+
+		
 	</body>
 </html>

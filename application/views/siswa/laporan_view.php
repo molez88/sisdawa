@@ -3,6 +3,7 @@
 <head>
   <link href="<?php echo base_url()?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="icon" type="image/png" href="<?php echo base_url() ?>assets/img/smp.png">
+  <title>Sistem Data Siswa | SMP Muhammadiyah 2 Gamping</title>
 </head>
 <body>
 <div class="col-md-10 col-md-offset-1">
