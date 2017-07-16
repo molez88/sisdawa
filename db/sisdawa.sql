@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2017 at 04:44 PM
+-- Generation Time: Jul 16, 2017 at 04:48 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.5.35
 
@@ -36,11 +36,7 @@ CREATE TABLE `agama` (
 --
 
 INSERT INTO `agama` (`id_agama`, `agama`) VALUES
-(10, 'Islam'),
-(11, 'Kristen'),
-(12, 'Katholik'),
-(13, 'Hindu'),
-(14, 'Budha');
+(10, 'Islam');
 
 -- --------------------------------------------------------
 
@@ -58,9 +54,15 @@ CREATE TABLE `kelas` (
 --
 
 INSERT INTO `kelas` (`id_kelas`, `nm_kelas`) VALUES
-(1, 'X'),
-(2, 'XI'),
-(4, 'XII');
+(6, 'VIIA'),
+(7, 'VIIB'),
+(8, 'VIIC'),
+(9, 'VIIIA'),
+(10, 'VIIIB'),
+(11, 'VIIIC'),
+(12, 'IXA'),
+(13, 'IXB'),
+(14, 'IXC');
 
 -- --------------------------------------------------------
 
@@ -161,27 +163,34 @@ INSERT INTO `penghasilan` (`id_penghasilan`, `penghasilan`) VALUES
 CREATE TABLE `siswa` (
   `nis` char(4) NOT NULL,
   `nama_lengkap` varchar(50) NOT NULL,
-  `gender` enum('Laki-laki','Perempuan') NOT NULL DEFAULT 'Perempuan',
+  `gender` enum('L','P') DEFAULT NULL,
   `id_agama` int(2) NOT NULL,
   `tempat_lahir` varchar(30) NOT NULL,
   `tgl_lahir` date NOT NULL,
   `status_dakel` enum('Anak Kandung','Anak Tiri','Anak Angkat') NOT NULL,
   `riwayat_kesehatan` varchar(255) NOT NULL,
-  `anak_ke` int(2) NOT NULL DEFAULT '0',
+  `anak_ke` int(2) NOT NULL,
   `jml_saudara` int(3) NOT NULL,
-  `alamat` varchar(350) NOT NULL,
+  `alamat` varchar(50) NOT NULL,
   `telp` varchar(15) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `foto_siswa` varchar(255) NOT NULL,
-  `thn_masuk` year(4) NOT NULL
+  `foto_siswa` varchar(255) DEFAULT NULL,
+  `thn_masuk` year(4) NOT NULL,
+  `kps` enum('Ya','Tidak') DEFAULT NULL,
+  `kkm` enum('Ya','Tidak') DEFAULT NULL,
+  `kip` enum('Ya','Tidak') DEFAULT NULL,
+  `kms` enum('Ya','Tidak') DEFAULT NULL,
+  `kks` enum('Ya','Tidak') DEFAULT NULL,
+  `tgl` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `siswa`
 --
 
-INSERT INTO `siswa` (`nis`, `nama_lengkap`, `gender`, `id_agama`, `tempat_lahir`, `tgl_lahir`, `status_dakel`, `riwayat_kesehatan`, `anak_ke`, `jml_saudara`, `alamat`, `telp`, `email`, `foto_siswa`, `thn_masuk`) VALUES
-('3423', 'fdfdsf', 'Perempuan', 12, 'dfdsfsdf', '2017-06-12', 'Anak Angkat', '', 2, 2, 'Cras ultricies ligula sed magna dictum porta. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Curabitur aliquet quam id dui posuere blandit. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia ', '4324243', '', 'abstrak.PNG', 0000);
+INSERT INTO `siswa` (`nis`, `nama_lengkap`, `gender`, `id_agama`, `tempat_lahir`, `tgl_lahir`, `status_dakel`, `riwayat_kesehatan`, `anak_ke`, `jml_saudara`, `alamat`, `telp`, `email`, `foto_siswa`, `thn_masuk`, `kps`, `kkm`, `kip`, `kms`, `kks`, `tgl`) VALUES
+('3212', 'Yui', 'P', 10, 'Lahat', '2017-07-19', 'Anak Tiri', 'sehat', 3, 2, 'Lahat', '4234324434', '', NULL, 2021, 'Ya', 'Tidak', 'Tidak', 'Tidak', 'Ya', '2017-07-11 21:17:04'),
+('2323', 'Hudan', 'L', 10, 'Tokyo', '2017-06-14', 'Anak Angkat', 'sakit', 2, 2, 'tokyo', '0838080213', '', 'gambar-11072017231516.jpg', 2026, 'Tidak', 'Ya', 'Tidak', 'Tidak', 'Ya', '2017-06-30 11:01:42');
 
 -- --------------------------------------------------------
 
@@ -192,8 +201,9 @@ INSERT INTO `siswa` (`nis`, `nama_lengkap`, `gender`, `id_agama`, `tempat_lahir`
 CREATE TABLE `siswa_ortu` (
   `id_siswa_ortu` int(10) NOT NULL,
   `nis` char(4) NOT NULL,
-  `ayah_nama` varchar(255) NOT NULL,
-  `ayah_tempat_lahir` varchar(255) NOT NULL,
+  `ayah_nama` varchar(50) NOT NULL,
+  `nik_ayah` varchar(50) NOT NULL,
+  `ayah_tempat_lahir` varchar(50) NOT NULL,
   `ayah_tgl_lahir` date NOT NULL,
   `ayah_id_agama` int(2) NOT NULL,
   `ayah_id_pendidikan` int(2) NOT NULL,
@@ -202,13 +212,14 @@ CREATE TABLE `siswa_ortu` (
   `ayah_alamat` text NOT NULL,
   `ayah_telp` varchar(15) NOT NULL,
   `ibu_nama` varchar(50) NOT NULL,
-  `ibu_tempat_lahir` varchar(30) NOT NULL,
+  `nik_ibu` varchar(50) NOT NULL,
+  `ibu_tempat_lahir` varchar(50) NOT NULL,
   `ibu_tgl_lahir` date NOT NULL,
   `ibu_id_agama` int(2) NOT NULL,
   `ibu_id_pendidikan` int(2) NOT NULL,
   `ibu_id_pekerjaan` int(2) NOT NULL,
   `ibu_id_penghasilan` int(2) NOT NULL,
-  `ibu_alamat` text NOT NULL,
+  `ibu_alamat` varchar(50) NOT NULL,
   `ibu_telp` varchar(15) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -216,8 +227,9 @@ CREATE TABLE `siswa_ortu` (
 -- Dumping data for table `siswa_ortu`
 --
 
-INSERT INTO `siswa_ortu` (`id_siswa_ortu`, `nis`, `ayah_nama`, `ayah_tempat_lahir`, `ayah_tgl_lahir`, `ayah_id_agama`, `ayah_id_pendidikan`, `ayah_id_pekerjaan`, `ayah_id_penghasilan`, `ayah_alamat`, `ayah_telp`, `ibu_nama`, `ibu_tempat_lahir`, `ibu_tgl_lahir`, `ibu_id_agama`, `ibu_id_pendidikan`, `ibu_id_pekerjaan`, `ibu_id_penghasilan`, `ibu_alamat`, `ibu_telp`) VALUES
-(3, '3423', 'dfdsfds', 'sdfsdf', '2017-06-12', 11, 2, 2, 1, 'Cras ultricies ligula sed magna dictum porta. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Curabitur aliquet quam id dui posuere blandit. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus suscipit tortor eget felis porttitor volutpat. Proin eget tortor risus. Donec sollicitudin molestie malesuada.', '3432423', 'dsdsad', 'dfsdf', '2017-06-19', 11, 2, 2, 2, 'Cras ultricies ligula sed magna dictum porta. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Curabitur aliquet quam id dui posuere blandit. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus suscipit tortor eget felis porttitor volutpat. Proin eget tortor risus. Donec sollicitudin molestie malesuada.', '433423');
+INSERT INTO `siswa_ortu` (`id_siswa_ortu`, `nis`, `ayah_nama`, `nik_ayah`, `ayah_tempat_lahir`, `ayah_tgl_lahir`, `ayah_id_agama`, `ayah_id_pendidikan`, `ayah_id_pekerjaan`, `ayah_id_penghasilan`, `ayah_alamat`, `ayah_telp`, `ibu_nama`, `nik_ibu`, `ibu_tempat_lahir`, `ibu_tgl_lahir`, `ibu_id_agama`, `ibu_id_pendidikan`, `ibu_id_pekerjaan`, `ibu_id_penghasilan`, `ibu_alamat`, `ibu_telp`) VALUES
+(19, '3212', 'dffdsf', '', 'sdfdfds', '2017-07-26', 10, 2, 1, 2, 'dfdfsdf', '4342343', 'fdfdfsdf', '', 'sddsa', '2017-07-04', 10, 2, 2, 2, 'dddsf', '3432432'),
+(18, '2323', 'Yuo', '', 'fsdfdsf', '2017-06-20', 10, 2, 2, 2, 'sdfdfs', '5345435', 'fdsfdsf', '', 'dfdsfsdf', '2017-07-07', 10, 2, 2, 2, 'dfsdfdsf', '35343432432');
 
 -- --------------------------------------------------------
 
@@ -228,14 +240,15 @@ INSERT INTO `siswa_ortu` (`id_siswa_ortu`, `nis`, `ayah_nama`, `ayah_tempat_lahi
 CREATE TABLE `siswa_wali` (
   `id_wali` int(4) NOT NULL,
   `nis` char(4) NOT NULL,
-  `wali_nama` varchar(255) NOT NULL,
-  `wali_tempat_lahir` varchar(255) NOT NULL,
+  `wali_nama` varchar(50) NOT NULL,
+  `nik_wali` varchar(50) NOT NULL,
+  `wali_tempat_lahir` varchar(50) NOT NULL,
   `wali_tgl_lahir` date NOT NULL,
   `wali_id_agama` int(2) NOT NULL,
   `wali_id_pendidikan` int(2) DEFAULT NULL,
   `wali_id_pekerjaan` int(2) DEFAULT NULL,
   `wali_id_penghasilan` int(2) NOT NULL,
-  `wali_alamat` varchar(255) NOT NULL,
+  `wali_alamat` varchar(50) NOT NULL,
   `wali_notelp` varchar(15) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -243,27 +256,9 @@ CREATE TABLE `siswa_wali` (
 -- Dumping data for table `siswa_wali`
 --
 
-INSERT INTO `siswa_wali` (`id_wali`, `nis`, `wali_nama`, `wali_tempat_lahir`, `wali_tgl_lahir`, `wali_id_agama`, `wali_id_pendidikan`, `wali_id_pekerjaan`, `wali_id_penghasilan`, `wali_alamat`, `wali_notelp`) VALUES
-(2, '3423', 'fdfdsfs', 'sdfdfs', '2017-06-19', 11, 1, 2, 2, 'fdsfCras ultricies ligula sed magna dictum porta. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Curabitur aliquet quam id dui posuere blandit. Curabitur arcu erat, accumsan id imperdiet et, ', '54534');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tes`
---
-
-CREATE TABLE `tes` (
-  `nisn` char(4) NOT NULL,
-  `nama` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tes`
---
-
-INSERT INTO `tes` (`nisn`, `nama`) VALUES
-('3211', 'dsdasdasd'),
-('3434', 'dadsdsadsad');
+INSERT INTO `siswa_wali` (`id_wali`, `nis`, `wali_nama`, `nik_wali`, `wali_tempat_lahir`, `wali_tgl_lahir`, `wali_id_agama`, `wali_id_pendidikan`, `wali_id_pekerjaan`, `wali_id_penghasilan`, `wali_alamat`, `wali_notelp`) VALUES
+(18, '3212', 'ffdfsdf', '', 'dfdsf', '2017-07-26', 10, 2, 1, 2, 'dfdfs', '2343423'),
+(17, '2323', 'dfdfdsdf', '', 'dfdfsd', '2017-07-07', 10, 2, 2, 2, 'fdsfdsf', '534543');
 
 -- --------------------------------------------------------
 
@@ -284,7 +279,8 @@ CREATE TABLE `th_akademik` (
 INSERT INTO `th_akademik` (`id_th_akademik`, `th_ajaran`, `keterangan`) VALUES
 (26, '2000/2001', 'Ganjil'),
 (27, '2001/2002', 'Genap'),
-(28, '2002/2003', 'Ganjil');
+(28, '2002/2003', 'Ganjil'),
+(29, '2003/2004', 'Genap');
 
 -- --------------------------------------------------------
 
@@ -296,8 +292,17 @@ CREATE TABLE `transaksi_kelas` (
   `id_transaksi_kelas` int(2) NOT NULL,
   `id_th_akademik` int(2) NOT NULL,
   `id_kelas` int(3) NOT NULL,
-  `siswa_id` int(11) NOT NULL
+  `nis` char(4) NOT NULL,
+  `tgl` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transaksi_kelas`
+--
+
+INSERT INTO `transaksi_kelas` (`id_transaksi_kelas`, `id_th_akademik`, `id_kelas`, `nis`, `tgl`) VALUES
+(35, 26, 6, '3212', '2017-07-11 21:26:22'),
+(36, 27, 9, '3212', '2017-07-11 21:26:33');
 
 -- --------------------------------------------------------
 
@@ -320,7 +325,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `password`, `nama`, `email`, `level`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Mukhlis Muas', 'molez88@gmail.com', 'admin'),
-(2, 'wahwah', 'cf5a7c1819d3a998a228bbae64229aa2', 'Sri Wahyuni', 'wahwa@gmail.com', 'operator');
+(2, 'wahwah', 'cf5a7c1819d3a998a228bbae64229aa2', 'Sri Wahyuni', 'wahwa@gmail.com', 'operator'),
+(3, 'mmm', 'a9b04dd9ee5f617f32d4c06c2797e76b', 'Muas muas', 'muasx@gmail.com', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -389,12 +395,6 @@ ALTER TABLE `siswa_wali`
   ADD KEY `siswa_id` (`nis`);
 
 --
--- Indexes for table `tes`
---
-ALTER TABLE `tes`
-  ADD PRIMARY KEY (`nisn`);
-
---
 -- Indexes for table `th_akademik`
 --
 ALTER TABLE `th_akademik`
@@ -407,7 +407,7 @@ ALTER TABLE `transaksi_kelas`
   ADD PRIMARY KEY (`id_transaksi_kelas`),
   ADD KEY `id_th_akademik` (`id_th_akademik`),
   ADD KEY `id_kelas` (`id_kelas`),
-  ADD KEY `siswa_id` (`siswa_id`);
+  ADD KEY `siswa_id` (`nis`);
 
 --
 -- Indexes for table `user`
@@ -423,12 +423,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `agama`
 --
 ALTER TABLE `agama`
-  MODIFY `id_agama` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_agama` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id_kelas` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_kelas` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `pekerjaan`
 --
@@ -438,7 +438,7 @@ ALTER TABLE `pekerjaan`
 -- AUTO_INCREMENT for table `pendidikan`
 --
 ALTER TABLE `pendidikan`
-  MODIFY `id_pendidikan` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_pendidikan` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `penghasilan`
 --
@@ -448,27 +448,27 @@ ALTER TABLE `penghasilan`
 -- AUTO_INCREMENT for table `siswa_ortu`
 --
 ALTER TABLE `siswa_ortu`
-  MODIFY `id_siswa_ortu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_siswa_ortu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `siswa_wali`
 --
 ALTER TABLE `siswa_wali`
-  MODIFY `id_wali` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_wali` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `th_akademik`
 --
 ALTER TABLE `th_akademik`
-  MODIFY `id_th_akademik` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_th_akademik` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `transaksi_kelas`
 --
 ALTER TABLE `transaksi_kelas`
-  MODIFY `id_transaksi_kelas` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_transaksi_kelas` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
