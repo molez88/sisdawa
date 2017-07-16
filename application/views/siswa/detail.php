@@ -131,6 +131,11 @@
 	          				<td colspan="3"><h4><strong>A. KETERANGAN AYAH KANDUNG</strong></h4></td>
 	          			</tr>
 	          			<tr>
+		          			<td width="25%">NIK</td>
+		          			<td>:</td>
+		          			<td width="73%"><?php echo $ayah_detail['nik_ayah'] ?></td>
+		          		</tr>
+	          			<tr>
 		          			<td width="25%">Nama</td>
 		          			<td>:</td>
 		          			<td width="73%"><?php echo $ayah_detail['ayah_nama'] ?></td>
@@ -174,6 +179,11 @@
 		          		<tr>
 	          				<td colspan="3"><h4><strong>B. KETERANGAN IBU KANDUNG</strong></h4></td>
 	          			</tr>
+	          			<tr>
+		          			<td width="25%">NIK</td>
+		          			<td>:</td>
+		          			<td width="73%"><?php echo $ibu_detail['nik_ibu'] ?></td>
+		          		</tr>
 		          		<tr>
 		          			<td width="25%">Nama</td>
 		          			<td>:</td>
@@ -223,6 +233,11 @@
           <div class="tab-pane" id="tab-3">
           	<div class="container">
           		<table class="table">
+          			<tr>
+		        			<td width="25%">NIK</td>
+		        			<td>:</td>
+		        			<td width="73%"><?php echo $wali_detail['nik_wali'] ?></td>
+		        		</tr>
           			<tr>
 		        			<td width="25%">Nama</td>
 		        			<td>:</td>

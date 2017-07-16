@@ -114,8 +114,8 @@
         <?php if ($siswa_nis['foto_siswa']): ?>
           <img src="<?php echo base_url('assets/img/siswa/'.$siswa_nis['foto_siswa']);?>" class="img-responsive" style="height: 270px">
         <?php else: ?>
-          <img src="<?php echo base_url('assets/img/default.png');?>" class="img-responsive" style="height: 270px>
-        <?php endif ?>
+          <img src="<?php echo base_url('assets/img/default.png');?>" class="img-responsive" style="height: 270px">
+        <?php endif; ?>
         
         <input type="file" class="form-control" name="userfile" size="20">
       </div>
@@ -128,6 +128,13 @@
       </h4>
     </div>
       <div class="panel-body">
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">14.&nbsp;&nbsp;NIK</label>
+          <div class="col-md-3 col-xs-12">
+            <input type="text" class="form-control" id="nik_ayah" name="nik_ayah" value="<?php echo $siswa_nis['nik_ayah'] ?>" required>
+          </div>
+            <em id="pesan_nik_ayah" style="color: red"></em>
+        </div>
         <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">14.&nbsp;&nbsp;Nama</label>
           <div class="col-md-5 col-xs-12">
@@ -210,6 +217,13 @@
     </div>
       <div class="panel-body">
         <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">14.&nbsp;&nbsp;NIK</label>
+          <div class="col-md-3 col-xs-12">
+            <input type="text" class="form-control" id="nik_ibu" name="nik_ibu" value="<?php echo $siswa_nis['nik_ibu'] ?>" required>
+          </div>
+            <em id="pesan_nik_ibu" style="color: red"></em>
+        </div>
+        <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">22.&nbsp;&nbsp;Nama</label>
           <div class="col-md-5 col-xs-12">
             <input type="text" class="form-control" name="ibu_nama" value="<?php echo $siswa_nis['ibu_nama'] ?>" required>
@@ -291,6 +305,13 @@
     </div>
     
       <div class="panel-body">
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">14.&nbsp;&nbsp;NIK</label>
+          <div class="col-md-3 col-xs-12">
+            <input type="text" class="form-control" id="nik_wali" name="nik_wali" value="<?php echo $siswa_nis['nik_wali'] ?>" required>
+          </div>
+            <em id="pesan_nik_wali" style="color: red"></em>
+        </div>
         <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">30.&nbsp;&nbsp;Nama</label>
           <div class="col-md-5 col-xs-12">
@@ -459,6 +480,31 @@
        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
           //display error message
           $("#pesan").html("Masukkan angka").show().fadeOut("slow");
+            return false;
+      }
+     });
+
+    $("#nik_ayah").keypress(function (e) {
+       //if the letter is not digit then display error and don't type anything
+       if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+          //display error message
+          $("#pesan_nik_ayah").html("Masukkan angka").show().fadeOut("slow");
+            return false;
+      }
+     });
+    $("#nik_ibu").keypress(function (e) {
+       //if the letter is not digit then display error and don't type anything
+       if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+          //display error message
+          $("#pesan_nik_ibu").html("Masukkan angka").show().fadeOut("slow");
+            return false;
+      }
+     });
+    $("#nik_wali").keypress(function (e) {
+       //if the letter is not digit then display error and don't type anything
+       if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+          //display error message
+          $("#pesan_nik_wali").html("Masukkan angka").show().fadeOut("slow");
             return false;
       }
      });

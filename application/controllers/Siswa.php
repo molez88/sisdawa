@@ -95,6 +95,7 @@ class Siswa extends CI_Controller {
 
 				$data_ortu = array(
 						'nis' => $this->input->post('nis'),
+						'nik_ayah' => $this->input->post('nik_ayah'),
 						'ayah_nama' => $this->input->post('ayah_nama'),
 						'ayah_tempat_lahir' => $this->input->post('ayah_tmp_lahir'),
 						'ayah_tgl_lahir' => $this->input->post('ayah_tgl_lahir'),
@@ -104,6 +105,7 @@ class Siswa extends CI_Controller {
 						'ayah_id_penghasilan' => $this->input->post('ayah_id_penghasilan'),
 						'ayah_alamat' => $this->input->post('ayah_alamat'),
 						'ayah_telp' => $this->input->post('ayah_telp'),
+						'nik_ibu' => $this->input->post('nik_ibu'),
 						'ibu_nama' => $this->input->post('ibu_nama'),
 						'ibu_tempat_lahir' => $this->input->post('ibu_tmp_lahir'),
 						'ibu_tgl_lahir' => $this->input->post('ibu_tgl_lahir'),
@@ -116,6 +118,7 @@ class Siswa extends CI_Controller {
 				);
 				$data_wali = array(
 						'nis' => $this->input->post('nis'),
+						'nik_wali' => $this->input->post('nik_wali'),
 						'wali_nama' => $this->input->post('wali_nama'),
 						'wali_tempat_lahir' => $this->input->post('wali_tmp_lahir'),
 						'wali_tgl_lahir' => $this->input->post('wali_tgl_lahir'),
@@ -150,6 +153,7 @@ class Siswa extends CI_Controller {
 				);
 				$data_ortu = array(
 						'nis' => $this->input->post('nis'),
+						'nik_ayah' => $this->input->post('nik_ayah'),
 						'ayah_nama' => $this->input->post('ayah_nama'),
 						'ayah_tempat_lahir' => $this->input->post('ayah_tmp_lahir'),
 						'ayah_tgl_lahir' => $this->input->post('ayah_tgl_lahir'),
@@ -159,6 +163,7 @@ class Siswa extends CI_Controller {
 						'ayah_id_penghasilan' => $this->input->post('ayah_id_penghasilan'),
 						'ayah_alamat' => $this->input->post('ayah_alamat'),
 						'ayah_telp' => $this->input->post('ayah_telp'),
+						'nik_ibu' => $this->input->post('nik_ibu'),
 						'ibu_nama' => $this->input->post('ibu_nama'),
 						'ibu_tempat_lahir' => $this->input->post('ibu_tmp_lahir'),
 						'ibu_tgl_lahir' => $this->input->post('ibu_tgl_lahir'),
@@ -171,6 +176,7 @@ class Siswa extends CI_Controller {
 				);
 				$data_wali = array(
 						'nis' => $this->input->post('nis'),
+						'nik_wali' => $this->input->post('nik_wali'),
 						'wali_nama' => $this->input->post('wali_nama'),
 						'wali_tempat_lahir' => $this->input->post('wali_tmp_lahir'),
 						'wali_tgl_lahir' => $this->input->post('wali_tgl_lahir'),
@@ -249,6 +255,7 @@ class Siswa extends CI_Controller {
 				);
 
 				$data_ortu = array(
+						'nik_ayah' => $this->input->post('nik_ayah'),
 						'ayah_nama' => $this->input->post('ayah_nama'),
 						'ayah_tempat_lahir' => $this->input->post('ayah_tmp_lahir'),
 						'ayah_tgl_lahir' => $this->input->post('ayah_tgl_lahir'),
@@ -258,6 +265,7 @@ class Siswa extends CI_Controller {
 						'ayah_id_penghasilan' => $this->input->post('ayah_id_penghasilan'),
 						'ayah_alamat' => $this->input->post('ayah_alamat'),
 						'ayah_telp' => $this->input->post('ayah_telp'),
+						'nik_ibu' => $this->input->post('nik_ibu'),
 						'ibu_nama' => $this->input->post('ibu_nama'),
 						'ibu_tempat_lahir' => $this->input->post('ibu_tmp_lahir'),
 						'ibu_tgl_lahir' => $this->input->post('ibu_tgl_lahir'),
@@ -270,6 +278,7 @@ class Siswa extends CI_Controller {
 				);
 
 				$data_wali = array(
+						'nik_wali' => $this->input->post('nik_wali'),
 						'wali_nama' => $this->input->post('wali_nama'),
 						'wali_tempat_lahir' => $this->input->post('wali_tmp_lahir'),
 						'wali_tgl_lahir' => $this->input->post('wali_tgl_lahir'),
@@ -303,6 +312,7 @@ class Siswa extends CI_Controller {
 				);
 
 				$data_ortu = array(
+						'nik_ayah' => $this->input->post('nik_ayah'),
 						'ayah_nama' => $this->input->post('ayah_nama'),
 						'ayah_tempat_lahir' => $this->input->post('ayah_tmp_lahir'),
 						'ayah_tgl_lahir' => $this->input->post('ayah_tgl_lahir'),
@@ -312,6 +322,7 @@ class Siswa extends CI_Controller {
 						'ayah_id_penghasilan' => $this->input->post('ayah_id_penghasilan'),
 						'ayah_alamat' => $this->input->post('ayah_alamat'),
 						'ayah_telp' => $this->input->post('ayah_telp'),
+						'nik_ibu' => $this->input->post('nik_ibu'),
 						'ibu_nama' => $this->input->post('ibu_nama'),
 						'ibu_tempat_lahir' => $this->input->post('ibu_tmp_lahir'),
 						'ibu_tgl_lahir' => $this->input->post('ibu_tgl_lahir'),
@@ -324,6 +335,7 @@ class Siswa extends CI_Controller {
 				);
 
 				$data_wali = array(
+						'nik_wali' => $this->input->post('nik_wali'),
 						'wali_nama' => $this->input->post('wali_nama'),
 						'wali_tempat_lahir' => $this->input->post('wali_tmp_lahir'),
 						'wali_tgl_lahir' => $this->input->post('wali_tgl_lahir'),
@@ -370,7 +382,7 @@ class Siswa extends CI_Controller {
 		$data['ibu_detail'] = $this->Siswa_model->getIbuDetail($nis);
 		$data['wali_detail'] = $this->Siswa_model->getWaliDetail($nis);
 
-   	$pdfFilePath = "Laporan_Anggota_$for_tgl.pdf"; //tentukan nama file dan lokasi report yang akan kita buat 
+   	$pdfFilePath = "Profil siswa nis_$nis.pdf"; //tentukan nama file dan lokasi report yang akan kita buat 
       
 	  $tgl_cetak = date('d F Y H:i:s');
 	  ini_set('memory_limit','32M'); 

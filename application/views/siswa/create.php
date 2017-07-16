@@ -127,17 +127,17 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
     </div>
       <div class="panel-body">
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">14.&nbsp;&nbsp;Nama</label>
-          <div class="col-md-5 col-xs-12">
-            <input type="text" class="form-control" name="ayah_nama" required>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">15.&nbsp;&nbsp;NIK</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">14.&nbsp;&nbsp;NIK</label>
           <div class="col-md-3 col-xs-12">
             <input type="text" class="form-control" id="nik_ayah" name="nik_ayah" required>
           </div>
             <em id="pesan_nik_ayah" style="color: red"></em>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">15.&nbsp;&nbsp;Nama</label>
+          <div class="col-md-5 col-xs-12">
+            <input type="text" class="form-control" name="ayah_nama" required>
+          </div>
         </div>
         <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">16.&nbsp;&nbsp;Tempat dan Tanggal Lahir</label>
@@ -215,17 +215,17 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
     </div>
       <div class="panel-body">
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">23.&nbsp;&nbsp;Nama</label>
-          <div class="col-md-5 col-xs-12">
-            <input type="text" class="form-control" name="ibu_nama" required>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">24.&nbsp;&nbsp;NIK</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">23.&nbsp;&nbsp;NIK</label>
           <div class="col-md-3 col-xs-12">
             <input type="text" class="form-control" id="nik_ibu" name="nik_ibu" required>
           </div>
             <em id="pesan_nik_ibu" style="color: red"></em>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">24.&nbsp;&nbsp;Nama</label>
+          <div class="col-md-5 col-xs-12">
+            <input type="text" class="form-control" name="ibu_nama" required>
+          </div>
         </div>
         <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">25.&nbsp;&nbsp;Tempat dan Tanggal Lahir</label>
@@ -304,17 +304,17 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
     
       <div class="panel-body">
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">32.&nbsp;&nbsp;Nama</label>
-          <div class="col-md-5 col-xs-12">
-            <input type="text" class="form-control" name="wali_nama" required>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">33.&nbsp;&nbsp;NIK</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">32.&nbsp;&nbsp;NIK</label>
           <div class="col-md-3 col-xs-12">
             <input type="text" class="form-control" id="nik_wali" name="nik_wali" required>
           </div>
             <em id="pesan_nik_wali" style="color: red"></em>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">33.&nbsp;&nbsp;Nama</label>
+          <div class="col-md-5 col-xs-12">
+            <input type="text" class="form-control" name="wali_nama" required>
+          </div>
         </div>
         <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">34.&nbsp;&nbsp;Tempat dan Tanggal Lahir</label>
@@ -477,6 +477,31 @@ echo form_open_multipart('siswa/input',array('class'=> 'form-horizontal form-lab
        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
           //display error message
           $("#pesan").html("Masukkan angka").show().fadeOut("slow");
+            return false;
+      }
+     });
+
+    $("#nik_ayah").keypress(function (e) {
+       //if the letter is not digit then display error and don't type anything
+       if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+          //display error message
+          $("#pesan_nik_ayah").html("Masukkan angka").show().fadeOut("slow");
+            return false;
+      }
+     });
+    $("#nik_ibu").keypress(function (e) {
+       //if the letter is not digit then display error and don't type anything
+       if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+          //display error message
+          $("#pesan_nik_ibu").html("Masukkan angka").show().fadeOut("slow");
+            return false;
+      }
+     });
+    $("#nik_wali").keypress(function (e) {
+       //if the letter is not digit then display error and don't type anything
+       if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+          //display error message
+          $("#pesan_nik_wali").html("Masukkan angka").show().fadeOut("slow");
             return false;
       }
      });
