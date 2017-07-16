@@ -25,7 +25,7 @@
 			</div>
 		</div>
 		<a href="<?php echo base_url()?>siswa/update/<?php echo $siswa_detail['nis'] ?>" type="button" class="btn btn-info btn-block"><i class="fa fa-edit"></i> Edit</a>
-		<a href="<?php echo base_url('siswa/print_pdf_detail_siswa/').$siswa_detail['nis']; ?>" type="button" class="btn btn-default btn-block"><i class="fa fa-print"></i> Print</a>
+		<a href="<?php echo base_url('siswa/print_pdf_detail_siswa/').$siswa_detail['nis']; ?>" type="button" class="btn btn-default btn-block" target="blank"><i class="fa fa-print"></i> Print</a>
 		
 		
 	</div>

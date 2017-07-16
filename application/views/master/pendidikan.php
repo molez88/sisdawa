@@ -4,7 +4,7 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-      Table Agama
+      Table Pendidikan
   </div>
   <!-- /.panel-heading -->
   <div class="panel-body">
@@ -60,17 +60,17 @@ $(document).ready(function() {
 
 
 
-function add_person()
+function add()
 {
     save_method = 'add';
     $('#form')[0].reset(); // reset form on modals
     $('.form-group').removeClass('has-error'); // clear error class
     $('.help-block').empty(); // clear error string
     $('#modal_form').modal('show'); // show bootstrap modal
-    $('.modal-title').text('Add Person'); // Set Title to Bootstrap modal title
+    $('.modal-title').text('Tambah Pendidikan'); // Set Title to Bootstrap modal title
 }
 
-function edit_person(id)
+function edit_pendidikan(id)
 {
     save_method = 'update';
     $('#form')[0].reset(); // reset form on modals
@@ -79,20 +79,16 @@ function edit_person(id)
 
     //Ajax Load data from ajax
     $.ajax({
-        url : "<?php echo site_url('person/ajax_edit/')?>/" + id,
+        url : "<?php echo site_url('master/pendidikan/editPendidikan/')?>/" + id,
         type: "GET",
         dataType: "JSON",
         success: function(data)
         {
 
-            $('[name="id"]').val(data.id);
-            $('[name="firstName"]').val(data.firstName);
-            $('[name="lastName"]').val(data.lastName);
-            $('[name="gender"]').val(data.gender);
-            $('[name="address"]').val(data.address);
-            $('[name="dob"]').datepicker('update',data.dob);
-            $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
-            $('.modal-title').text('Edit Person'); // Set title to Bootstrap modal title
+            $('[name="id_agama"]').val(data.id_agama);
+            $('[name="pendidikan"]').val(data.nama_pendidikan);
+            $('#modal_form').modal('show');
+            $('.modal-title').text('Form Agama');
 
         },
         error: function (jqXHR, textStatus, errorThrown)
@@ -114,9 +110,9 @@ function save()
     var url;
 
     if(save_method == 'add') {
-        url = "<?php echo site_url('person/ajax_add')?>";
+        url = "<?php echo site_url('master/pendidikan/addPendidikan')?>";
     } else {
-        url = "<?php echo site_url('person/ajax_update')?>";
+        url = "<?php echo site_url('master/pendidikan/updatePendidikan')?>";
     }
 
     // ajax adding data to database
@@ -156,13 +152,13 @@ function save()
     });
 }
 
-function delete_person(id)
+function delete_pendidikan(id)
 {
     if(confirm('Are you sure delete this data?'))
     {
         // ajax delete data to database
         $.ajax({
-            url : "<?php echo site_url('person/ajax_delete')?>/"+id,
+            url : "<?php echo site_url('master/pendidikan/deletePendidikan')?>/"+id,
             type: "POST",
             dataType: "JSON",
             success: function(data)
@@ -195,7 +191,7 @@ function delete_person(id)
                   <div class="form-group">
                       <label class="control-label col-md-3">Pendidikan</label>
                       <div class="col-md-9">
-                          <input name="agama" placeholder="Pendidikan" class="form-control" type="text">
+                          <input name="pendidikan" placeholder="Pendidikan" class="form-control" type="text">
                           <span class="help-block"></span>
                       </div>
                   </div>

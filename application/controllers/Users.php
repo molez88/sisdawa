@@ -48,28 +48,6 @@ class Users extends CI_Controller {
 		$this->Users_model->user_hapus($id);
 		redirect('users','refresh');
 	}
-
-	// public function editusers($id=0)
-	// {
-	// 	if ($this->session->userdata('logged_in') == FALSE || $this->session->userdata('level') != 'admin') {
-	// 		echo "<script language=javascript>alert('Maaf. Anda tidak memiliki akses.');</script>";
-	// 		redirect('users/login','refresh');
-	// 	}
-	// 	$data['judul'] = 'Form Edit User';
-
-
-	// 	$this->form_validation->set_rules('username', 'username','required');
-	// 	// $this->form_validation->set_rules('email', 'email','required|is_unique');
-	// 	if ($this->form_validation->run() == FALSE) {
-	// 		$data['user_id'] = $this->Users_model->getUserId($id);
-	// 		$property['konten'] = $this->load->view('users/edit',$data,TRUE);
-	// 		$this->load->view('template',$property);
-	// 	} else {
-	// 		$this->Users_model->users_edit($id);
-	// 		redirect('users','refresh');
-	// 	}
-	// }
-	
 	public function profile($username='')
 	{
 		$data['kembali']= FALSE;
@@ -111,10 +89,7 @@ class Users extends CI_Controller {
 	}
 	public function logout()
 	{
-		// session_unset('username');
-		// session_unset('nama');
-		// session_unset('foto');
-		// session_unset('level');
+		
 		$this->session->sess_destroy();
 
 		redirect('users/login',TRUE);

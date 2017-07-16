@@ -48,7 +48,7 @@ class Pendidikan extends CI_Controller {
 		echo json_encode($output);
 	}
 
-	public function ajax_edit($id)
+	public function editPendidikan($id)
 	{
 		$data = $this->Pendidikan_model->get_by_id($id);
 		echo json_encode($data);
